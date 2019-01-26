@@ -1,13 +1,23 @@
+// @flow
+
 import React, { Component } from "react";
 import logo from "../assets/logo.svg";
 import * as styled from "./styled";
 
-class App extends Component {
+export type Props = {
+  alt: string
+};
+
+class App extends Component<Props> {
+  static defaultProps = {
+    alt: "A default alt for logo"
+  };
+
   render() {
     return (
       <styled.Wrapper>
-        <styled.Container className="App-header">
-          <styled.Logo src={logo} alt="logo" />
+        <styled.Container>
+          <styled.Logo src={logo} alt={this.props.alt} />
         </styled.Container>
       </styled.Wrapper>
     );

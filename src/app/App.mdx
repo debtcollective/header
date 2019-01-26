@@ -2,10 +2,15 @@
 name: App
 ---
 
-import App from "./App";
+import { Playground, PropsTable } from 'docz'
+import App from './App'
 
 # App
 
-This is an example to test that docz is working properly
+<PropsTable of={App} />
 
-<App />
+## Basic usage
+
+<Playground>
+  <App alt={'spinning logo'} />
+</Playground>

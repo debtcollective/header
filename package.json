@@ -34,6 +34,7 @@
   "devDependencies": {
     "docz": "^0.13.7",
     "docz-theme-default": "^0.13.7",
+    "flow-bin": "^0.91.0",
     "semantic-release": "^15.13.3",
     "styled-components": "^4.1.3"
   }

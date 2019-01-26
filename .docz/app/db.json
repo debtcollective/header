@@ -25,6 +25,11 @@
           "depth": 1,
           "slug": "app",
           "value": "App"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
         }
       ]
     }
