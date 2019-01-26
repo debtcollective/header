@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import logo from "../assets/logo.svg";
-import "./App.css";
+import * as styled from "./styled";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-      </div>
+      <styled.Wrapper>
+        <styled.Container className="App-header">
+          <styled.Logo src={logo} alt="logo" />
+        </styled.Container>
+      </styled.Wrapper>
     );
   }
 }
