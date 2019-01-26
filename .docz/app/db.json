@@ -11,20 +11,20 @@
     "themeConfig": {}
   },
   "entries": {
-    "src/app/App.mdx": {
-      "name": "App",
-      "id": "4c68a3baf322cbf787b3e5bcf666a0ef",
-      "filepath": "src/app/App.mdx",
-      "link": "https://github.com/debtcollective/header/edit/master/src/app/App.mdx",
-      "slug": "src-app-app",
-      "route": "/src-app-app",
+    "src/appbar/AppBar.mdx": {
+      "name": "AppBar",
+      "id": "02bfa1e49d50ff504b7f92214fe58af1",
+      "filepath": "src/appbar/AppBar.mdx",
+      "link": "https://github.com/debtcollective/header/edit/master/src/appbar/AppBar.mdx",
+      "slug": "src-appbar-app-bar",
+      "route": "/src-appbar-app-bar",
       "order": 0,
       "menu": null,
       "headings": [
         {
           "depth": 1,
-          "slug": "app",
-          "value": "App"
+          "slug": "appbar",
+          "value": "AppBar"
         },
         {
           "depth": 2,

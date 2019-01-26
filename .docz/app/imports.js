@@ -1,4 +1,4 @@
 export const imports = {
-  'src/app/App.mdx': () =>
-    import(/* webpackPrefetch: true, webpackChunkName: "src-app-app" */ 'src/app/App.mdx'),
+  'src/appbar/AppBar.mdx': () =>
+    import(/* webpackPrefetch: true, webpackChunkName: "src-appbar-app-bar" */ 'src/appbar/AppBar.mdx'),
 }
