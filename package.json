@@ -28,7 +28,12 @@
     "type": "git",
     "url": "https://github.com/debtcollective/header.git"
   },
+  "resolutions": {
+    "ansi-styles": "^3.2.0"
+  },
   "devDependencies": {
+    "docz": "^0.13.7",
+    "docz-theme-default": "^0.13.7",
     "semantic-release": "^15.13.3"
   }
 }

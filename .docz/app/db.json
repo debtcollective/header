@@ -1,0 +1,32 @@
+{
+  "config": {
+    "title": "Header",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "ordering": "descending",
+    "version": "0.0.0-development",
+    "repository": "https://github.com/debtcollective/header",
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {}
+  },
+  "entries": {
+    "src/App.mdx": {
+      "name": "App",
+      "id": "59c00ed3c8ba44717da26aa5f76edd30",
+      "filepath": "src/App.mdx",
+      "link": "https://github.com/debtcollective/header/edit/master/src/App.mdx",
+      "slug": "src-app",
+      "route": "/src-app",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "app",
+          "value": "App"
+        }
+      ]
+    }
+  }
+}
