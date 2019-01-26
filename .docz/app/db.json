@@ -11,13 +11,13 @@
     "themeConfig": {}
   },
   "entries": {
-    "src/App.mdx": {
+    "src/app/App.mdx": {
       "name": "App",
-      "id": "59c00ed3c8ba44717da26aa5f76edd30",
-      "filepath": "src/App.mdx",
-      "link": "https://github.com/debtcollective/header/edit/master/src/App.mdx",
-      "slug": "src-app",
-      "route": "/src-app",
+      "id": "4c68a3baf322cbf787b3e5bcf666a0ef",
+      "filepath": "src/app/App.mdx",
+      "link": "https://github.com/debtcollective/header/edit/master/src/app/App.mdx",
+      "slug": "src-app-app",
+      "route": "/src-app-app",
       "order": 0,
       "menu": null,
       "headings": [
