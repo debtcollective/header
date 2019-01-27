@@ -2,6 +2,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, the principal commands you may want to know are:
 
+## Getting Started
+
+Make sure to have the environment variables in order the project to work (even locally)
+
+```
+$ cp env.sample .env
+```
+
+## Main Scripts
+
 ### `yarn start`
 
 Runs the app in the development mode.<br>
