@@ -1,5 +1,9 @@
 export default (() => {
-  const discourseEndpoint = "http://localhost:3000";
+  const discourseEndpoint = process.env.REACT_APP_DISCOURSE_ENDPOINT;
+
+  if (!discourseEndpoint) {
+    throw new Error("You must provide a valid Discourse enpoint");
+  }
 
   const baseOptions = (token, extendWith) => {
     return {
