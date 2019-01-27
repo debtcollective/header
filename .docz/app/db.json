@@ -59,6 +59,38 @@
           "value": "Types"
         }
       ]
+    },
+    "src/session/Session.mdx": {
+      "name": "Session",
+      "id": "93a92784a988244564ad2ec2d2269a13",
+      "filepath": "src/session/Session.mdx",
+      "link": "https://github.com/debtcollective/header/edit/master/src/session/Session.mdx",
+      "slug": "src-session-session",
+      "route": "/src-session-session",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "session",
+          "value": "Session"
+        },
+        {
+          "depth": 2,
+          "slug": "render-user-props",
+          "value": "Render User props"
+        },
+        {
+          "depth": 2,
+          "slug": "render-actions",
+          "value": "Render Actions"
+        },
+        {
+          "depth": 2,
+          "slug": "types",
+          "value": "Types"
+        }
+      ]
     }
   }
 }
