@@ -32,6 +32,33 @@
           "value": "Basic usage"
         }
       ]
+    },
+    "src/menu/Menu.mdx": {
+      "name": "Menu",
+      "id": "b2e7162645a8081ff5a64b9470c3f879",
+      "filepath": "src/menu/Menu.mdx",
+      "link": "https://github.com/debtcollective/header/edit/master/src/menu/Menu.mdx",
+      "slug": "src-menu-menu",
+      "route": "/src-menu-menu",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "menu",
+          "value": "Menu"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        },
+        {
+          "depth": 2,
+          "slug": "types",
+          "value": "Types"
+        }
+      ]
     }
   }
 }

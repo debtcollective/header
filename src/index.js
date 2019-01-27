@@ -8,8 +8,15 @@ import * as serviceWorker from "./serviceWorker";
 
 const root = document.getElementById("root");
 
+const links = [
+  { text: "Admin", href: "/admin/disputes", roles: ["admin"] },
+  { text: "My Disputes", href: "/disputes/my" },
+  { text: "Dispute Your Debt", href: "/" },
+  { text: "Community", href: "https://community.debtcollective.org" }
+];
+
 if (root !== null) {
-  ReactDOM.render(<DebtcollectiveHeader />, root);
+  ReactDOM.render(<DebtcollectiveHeader links={links} />, root);
 }
 
 // If you want your app to work offline and load faster, you can change

@@ -2,11 +2,14 @@
 
 import React from "react";
 import AppBar from "./appbar";
+import Menu from "./menu";
 
-const DebtcollectiveHeader = () => (
+import type { Link } from "./menu";
+
+const DebtcollectiveHeader = ({ links }: { links: Array<Link> }) => (
   <AppBar>
-    {/* <Menu links={links} />
-		<Session>
+    <Menu links={links} />
+    {/* <Session>
 			{({ user }) => (
 				<Notifications user={user}>
 					{({ alerts, messages }) => (
