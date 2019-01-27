@@ -26,6 +26,10 @@ export default (() => {
       this.token = null;
     }
 
+    goTo(path) {
+      window.open(`${discourseEndpoint}/${path}`, "_blank");
+    }
+
     refreshToken = () => {
       return Boolean(this.token)
         ? Promise.resolve(this.token)
