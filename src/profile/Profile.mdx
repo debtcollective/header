@@ -1,0 +1,45 @@
+---
+name: Profile
+---
+
+import { Playground, PropsTable } from 'docz'
+import { ProfileItems } from "./ProfileItems";
+import { AlertsDropdown } from "./AlertsDropdown";
+import { InboxDropdown } from "./InboxDropdown";
+import { UserAvatarDropdown } from "./UserAvatarDropdown";
+
+## AlertsDropdown
+
+<PropsTable of={AlertsDropdown} />
+
+## InboxDropdown
+
+<PropsTable of={InboxDropdown} />
+
+## UserAvatarDropdown
+
+<PropsTable of={UserAvatarDropdown} />
+
+## ProfileItems
+
+Serves as a wrapper to render "Profile items" section as a unit with inteded common styles
+
+## Basic usage
+
+<Playground>
+  <ProfileItems>
+    <AlertsDropdown alerts={[{}, {}]} />
+    <InboxDropdown />
+    <UserAvatarDropdown />
+  </ProfileItems>
+</Playground>
+
+## Types
+
+```
+export type Alert = {};
+```
+
+```
+export type Message = {};
+```

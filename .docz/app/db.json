@@ -60,6 +60,48 @@
         }
       ]
     },
+    "src/profile/Profile.mdx": {
+      "name": "Profile",
+      "id": "ca512db99ad435a262a1eea694f74cc6",
+      "filepath": "src/profile/Profile.mdx",
+      "link": "https://github.com/debtcollective/header/edit/master/src/profile/Profile.mdx",
+      "slug": "src-profile-profile",
+      "route": "/src-profile-profile",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 2,
+          "slug": "alertsdropdown",
+          "value": "AlertsDropdown"
+        },
+        {
+          "depth": 2,
+          "slug": "inboxdropdown",
+          "value": "InboxDropdown"
+        },
+        {
+          "depth": 2,
+          "slug": "useravatardropdown",
+          "value": "UserAvatarDropdown"
+        },
+        {
+          "depth": 2,
+          "slug": "profileitems",
+          "value": "ProfileItems"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        },
+        {
+          "depth": 2,
+          "slug": "types",
+          "value": "Types"
+        }
+      ]
+    },
     "src/session/Session.mdx": {
       "name": "Session",
       "id": "93a92784a988244564ad2ec2d2269a13",
