@@ -24,6 +24,7 @@ export default (() => {
   class DiscourseService {
     constructor() {
       this.token = null;
+      this.baseUrl = discourseEndpoint;
     }
 
     goTo(path) {
