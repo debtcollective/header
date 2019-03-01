@@ -2,7 +2,7 @@ _Here you will describe the issue/feature you want to get fixed/implemented with
 
 ## Notes (optional)
 
-_Here you can list any extra information about the ticket, like implementation recomendations or know issues developers may encounter._
+_Here you can list any extra information about the ticket, like implementation recommendations or know issues developers may encounter._
 
 ## Acceptance criteria
 
