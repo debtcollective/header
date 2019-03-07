@@ -12,11 +12,11 @@ export class Session extends React.Component<
   { user: ?User }
 > {
   static defaultProps = {
-    service: SessionService
+    service: SessionService,
   };
 
   state = {
-    user: null
+    user: null,
   };
 
   componentDidMount() {
@@ -32,7 +32,7 @@ export class Session extends React.Component<
     const { user } = this.state;
     const { children } = this.props;
 
-    return Boolean(user) ? (
+    return user ? (
       // $FlowFixMe
       children({ user })
     ) : (

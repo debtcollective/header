@@ -8,13 +8,13 @@ import Badge from "@material-ui/core/Badge";
 import type { Message } from "./types";
 
 export const InboxDropdown = ({ messages }: { messages: Array<Message> }) => (
-  <IconButton color="inherit">
-    <Badge badgeContent={messages.length} color="secondary">
+  <IconButton color='inherit'>
+    <Badge badgeContent={messages.length} color='secondary'>
       <MailIcon />
     </Badge>
   </IconButton>
 );
 
 InboxDropdown.defaultProps = {
-  messages: []
+  messages: [],
 };

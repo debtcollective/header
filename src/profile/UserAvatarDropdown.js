@@ -20,15 +20,15 @@ const getSrcPath = (src, size) => {
 const AvatarStyled = withStyles({
   smallAvatar: {
     width: 32,
-    height: 32
-  }
+    height: 32,
+  },
 })(({ src, classes }) => (
   <Avatar src={getSrcPath(src, 65)} className={classes.smallAvatar} />
 ));
 
 const Dropdown = ({ anchorEl, handleClose }) => (
   <Menu
-    id="simple-menu"
+    id='simple-menu'
     anchorEl={anchorEl}
     open={Boolean(anchorEl)}
     onClose={handleClose}
@@ -44,11 +44,11 @@ export class UserAvatarDropdown extends React.Component<
   { anchorEl: ?EventTarget }
 > {
   static defaultProps = {
-    user: {}
+    user: {},
   };
 
   state = {
-    anchorEl: null
+    anchorEl: null,
   };
 
   render() {
@@ -56,7 +56,7 @@ export class UserAvatarDropdown extends React.Component<
     const { anchorEl } = this.state;
 
     return (
-      <IconButton color="inherit" onClick={this.handleClick}>
+      <IconButton color='inherit' onClick={this.handleClick}>
         {user.avatar_template ? (
           <AvatarStyled src={user.avatar_template} />
         ) : (

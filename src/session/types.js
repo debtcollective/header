@@ -1,3 +1,4 @@
+// @flow
 export type User = {
   admin: boolean,
   automatically_unpin_topics: boolean,
@@ -13,14 +14,14 @@ export type User = {
   dynamic_favicon: boolean,
   enable_quoting: boolean,
   external_links_in_new_tab: boolean,
-  groups: Array,
+  groups: Array<any>,
   hide_profile_and_presence: boolean,
   id: number,
   is_anonymous: boolean,
   link_posting_access: string,
   mailing_list_mode: boolean,
   moderator: boolean,
-  muted_category_ids: Array,
+  muted_category_ids: Array<any>,
   name: string,
   notification_channel_position: any,
   post_queue_new_count: number,
@@ -36,10 +37,10 @@ export type User = {
   site_flagged_posts_count: number,
   staff: boolean,
   title: string,
-  top_category_ids: Array,
+  top_category_ids: Array<any>,
   topic_count: number,
   trust_level: number,
   unread_notifications: number,
   unread_private_messages: number,
-  username: string
+  username: string,
 };

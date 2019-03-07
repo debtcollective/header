@@ -10,9 +10,9 @@ export default (() => {
       credentials: "include",
       headers: {
         Accept: "application/json",
-        ...(token ? { "X-CSRF-Token": token } : {})
+        ...(token ? { "X-CSRF-Token": token } : {}),
       },
-      ...extendWith
+      ...extendWith,
     };
   };
 
@@ -32,7 +32,7 @@ export default (() => {
     }
 
     refreshToken = () => {
-      return Boolean(this.token)
+      return this.token
         ? Promise.resolve(this.token)
         : fetch(`${discourseEndpoint}/session/csrf.json`)
             .then(res => res.json())
@@ -46,7 +46,7 @@ export default (() => {
       return this.refreshToken().then(token =>
         fetch(`${discourseEndpoint}/${url}`, {
           ...getOptions(token),
-          ...options
+          ...options,
         })
       );
     };
@@ -55,7 +55,7 @@ export default (() => {
       return this.refreshToken().then(token =>
         fetch(`${discourseEndpoint}/${url}`, {
           ...postOptions(token),
-          ...options
+          ...options,
         })
       );
     };
@@ -64,7 +64,7 @@ export default (() => {
       return this.refreshToken().then(token =>
         fetch(`${discourseEndpoint}/${url}`, {
           ...putOptions(token),
-          ...options
+          ...options,
         })
       );
     };
@@ -73,7 +73,7 @@ export default (() => {
       return this.refreshToken().then(token =>
         fetch(`${discourseEndpoint}/${url}`, {
           ...deleteOptions(token),
-          ...options
+          ...options,
         })
       );
     };

@@ -12,7 +12,7 @@ const links = [
   { text: "Admin", href: "/admin/disputes", roles: ["admin"] },
   { text: "My Disputes", href: "/disputes/my" },
   { text: "Dispute Your Debt", href: "/" },
-  { text: "Community", href: "https://community.debtcollective.org" }
+  { text: "Community", href: "https://community.debtcollective.org" },
 ];
 
 if (root !== null) {

@@ -7,10 +7,10 @@ export class SessionActions extends React.Component {
   render() {
     return (
       <div>
-        <Button color="inherit" onClick={this.createSession("login")}>
+        <Button color='inherit' onClick={this.createSession("login")}>
           Login
         </Button>
-        <Button color="inherit" onClick={this.createSession("signup")}>
+        <Button color='inherit' onClick={this.createSession("signup")}>
           Signup
         </Button>
       </div>

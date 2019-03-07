@@ -8,13 +8,13 @@ import Badge from "@material-ui/core/Badge";
 import type { Alert } from "./types";
 
 export const AlertsDropdown = ({ alerts }: { alerts: Array<Alert> }) => (
-  <IconButton color="inherit">
-    <Badge badgeContent={alerts.length} color="secondary">
+  <IconButton color='inherit'>
+    <Badge badgeContent={alerts.length} color='secondary'>
       <NotificationsIcon />
     </Badge>
   </IconButton>
 );
 
 AlertsDropdown.defaultProps = {
-  alerts: []
+  alerts: [],
 };
