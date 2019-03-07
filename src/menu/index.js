@@ -1,6 +1,4 @@
 import { Menu } from "./Menu";
-import { Link, Role } from "./types";
-
-export { Link, Role };
+export { Link, Role } from "./types";
 
 export default Menu;
