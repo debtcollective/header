@@ -1,16 +1,19 @@
 // @flow
 
 import * as React from "react";
+import typeof { SessionService as Service } from "./SessionService";
 import { SessionActions } from "./SessionActions";
 import { SessionService } from "./SessionService";
 
-import type { User } from "./types";
-import typeof { SessionService as Service } from "./SessionService";
+type Props = {
+  children?: React.Node,
+  service: Service,
+};
 
-export class Session extends React.Component<
-  { children?: React.Node, service: Service },
-  { user: ?User }
-> {
+type State = {
+  user: ?User,
+};
+export class Session extends React.Component<Props, State> {
   static defaultProps = {
     service: SessionService,
   };
@@ -40,7 +43,7 @@ export class Session extends React.Component<
     );
   }
 
-  updateUser(user: User) {
+  updateUser(user: ?User) {
     this.setState({ user });
   }
 

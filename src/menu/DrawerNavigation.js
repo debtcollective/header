@@ -1,11 +1,9 @@
 // @flow
 
-import React from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
-import type Link from "./types";
+import React from "react";
 
 type Props = {
   links: Array<Link>,

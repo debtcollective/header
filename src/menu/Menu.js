@@ -1,13 +1,10 @@
 // @flow
 
 import * as React from "react";
-import MenuIcon from "@material-ui/icons/Menu";
-import IconButton from "@material-ui/core/IconButton";
 import Drawer from "@material-ui/core/Drawer";
-
 import { DrawerNavigation } from "./DrawerNavigation";
-
-import type Link from "./types";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 
 export class Menu extends React.Component<
   { links: Array<Link> },

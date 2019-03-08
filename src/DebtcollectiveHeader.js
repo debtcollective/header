@@ -1,19 +1,16 @@
 // @flow
 
-import React from "react";
 import AppBar from "./appbar";
 import Menu from "./menu";
+import React from "react";
 import Session from "./session";
-
-import type { Link } from "./menu";
 
 const DebtcollectiveHeader = ({ links }: { links: Array<Link> }) => (
   <AppBar>
     <Menu links={links} />
     <Session>
-      {({ user }) =>
-        JSON.stringify(user)
-        /* <Notifications user={user}>
+      {({ user }) => JSON.stringify(user)
+      /* <Notifications user={user}>
 					{({ alerts, messages }) => (
 						<ProfileItems>
 							<UserAvatarDropdown user={user} />

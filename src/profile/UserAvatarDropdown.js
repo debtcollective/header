@@ -1,16 +1,13 @@
 // @flow
 
 import * as React from "react";
-import Avatar from "@material-ui/core/Avatar";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import Avatar from "@material-ui/core/Avatar";
+import discourseService from "../common/DiscourseService";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
-
-import discourseService from "../common/DiscourseService";
-
-import type { User } from "../common/types";
 
 const getSrcPath = (src, size) => {
   const path = src.replace("{size}", size);
@@ -19,8 +16,8 @@ const getSrcPath = (src, size) => {
 
 const AvatarStyled = withStyles({
   smallAvatar: {
-    width: 32,
     height: 32,
+    width: 32,
   },
 })(({ src, classes }) => (
   <Avatar src={getSrcPath(src, 65)} className={classes.smallAvatar} />

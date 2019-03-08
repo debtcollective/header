@@ -1,5 +1,16 @@
-// @flow
-export type User = {
+declare type Role = "admin" | "guest";
+
+declare type Link = {
+  text: string,
+  href: string,
+  roles?: Array<Role>,
+};
+
+declare type Alert = {};
+
+declare type Message = {};
+
+declare type User = {
   admin: boolean,
   automatically_unpin_topics: boolean,
   avatar_template: string,
