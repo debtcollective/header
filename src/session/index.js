@@ -1,3 +1,1 @@
-import { Session } from "./Session";
-
-export default Session;
+export { Session as default } from "./Session";

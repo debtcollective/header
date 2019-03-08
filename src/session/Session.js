@@ -1,25 +1,24 @@
 // @flow
 
 import * as React from "react";
-import typeof { SessionService as Service } from "./SessionService";
 import { SessionActions } from "./SessionActions";
 import { SessionService } from "./SessionService";
 
 type Props = {
   children?: React.Node,
-  service: Service,
+  service: SessionHandler
 };
 
 type State = {
-  user: ?User,
+  user: ?User
 };
 export class Session extends React.Component<Props, State> {
   static defaultProps = {
-    service: SessionService,
+    service: SessionService
   };
 
   state = {
-    user: null,
+    user: null
   };
 
   componentDidMount() {

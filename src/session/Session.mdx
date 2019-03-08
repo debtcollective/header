@@ -2,26 +2,34 @@
 name: Session
 ---
 
-import { Playground, PropsTable } from "docz"
-import Session from "./"
+import { Playground, PropsTable } from "docz";
+import Session from "./";
 
 # Session
 
+Use a given service in order to fetch user information and pass that object to children. Whenever the user is not available this component will render a set of login and signup actions
+
 <PropsTable of={Session} />
-
-## Render User props
-
-<Playground>
-  <Session service={{ getUser: () => Promise.resolve({ username: 'John Doe' }) }}>
-    {(props) => <div>{JSON.stringify(props)}</div>}
-  </Session>
-</Playground>
 
 ## Render Actions
 
+Simulate that there is no user information available (user hasn't logged in yet)
+
 <Playground>
   <Session service={{ getUser: () => Promise.resolve(null) }}>
-    {(props) => <div>{JSON.stringify(props)}</div>}
+    {props => <div>{JSON.stringify(props)}</div>}
+  </Session>
+</Playground>
+
+## Render User props
+
+Simulate that user has perform a successful login, then the props are now available to children
+
+<Playground>
+  <Session
+    service={{ getUser: () => Promise.resolve({ username: "John Doe" }) }}
+  >
+    {props => <div>{JSON.stringify(props)}</div>}
   </Session>
 </Playground>
 
