@@ -6,19 +6,19 @@ import { SessionService } from "./SessionService";
 
 type Props = {
   children?: React.Node,
-  service: SessionHandler
+  service: SessionHandler,
 };
 
 type State = {
-  user: ?User
+  user: ?User,
 };
 export class Session extends React.Component<Props, State> {
   static defaultProps = {
-    service: SessionService
+    service: SessionService,
   };
 
   state = {
-    user: null
+    user: null,
   };
 
   componentDidMount() {
