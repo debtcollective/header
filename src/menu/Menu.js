@@ -6,10 +6,15 @@ import { DrawerNavigation } from "./DrawerNavigation";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
-export class Menu extends React.Component<
-  { links: Array<Link> },
-  { open: boolean }
-> {
+type Props = {
+  links: Array<Link>,
+};
+
+type State = {
+  open: boolean,
+};
+
+export class Menu extends React.Component<Props, State> {
   state = {
     open: false,
   };

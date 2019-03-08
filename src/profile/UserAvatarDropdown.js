@@ -36,10 +36,14 @@ const Dropdown = ({ anchorEl, handleClose }) => (
   </Menu>
 );
 
-export class UserAvatarDropdown extends React.Component<
-  { user: User },
-  { anchorEl: ?EventTarget }
-> {
+type Props = {
+  user: User,
+};
+
+type State = {
+  anchorEl: ?EventTarget,
+};
+export class UserAvatarDropdown extends React.Component<Props, State> {
   static defaultProps = {
     user: {},
   };

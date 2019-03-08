@@ -1,3 +1,9 @@
+declare type SessionHandler = {
+  getUser(): Promise<any>,
+  login(): void,
+  signup(): void,
+};
+
 declare type Role = "admin" | "guest";
 
 declare type Link = {

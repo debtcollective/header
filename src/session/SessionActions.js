@@ -1,9 +1,17 @@
+// @flow
+
 import * as React from "react";
 import Button from "@material-ui/core/Button";
-
 import { SessionService } from "./SessionService";
 
-export class SessionActions extends React.Component {
+type Props = {
+  service: SessionHandler,
+};
+export class SessionActions extends React.Component<Props> {
+  static defaultProps = {
+    service: SessionService,
+  };
+
   render() {
     return (
       <div>
@@ -17,7 +25,7 @@ export class SessionActions extends React.Component {
     );
   }
 
-  createSession = action => () => {
-    SessionService[action]();
+  createSession = (action: "login" | "signup") => () => {
+    this.props.service[action]();
   };
 }

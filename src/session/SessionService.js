@@ -1,3 +1,5 @@
+// @flow
+
 import discourseService from "../common/DiscourseService";
 
 export class SessionService {
@@ -10,10 +12,10 @@ export class SessionService {
   }
 
   static login() {
-    return discourseService.goTo("login");
+    discourseService.goTo("login");
   }
 
   static signup() {
-    return discourseService.goTo("signup");
+    discourseService.goTo("signup");
   }
 }
