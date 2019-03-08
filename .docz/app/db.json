@@ -103,6 +103,11 @@
       "menu": null,
       "headings": [
         {
+          "depth": 1,
+          "slug": "profile",
+          "value": "Profile"
+        },
+        {
           "depth": 2,
           "slug": "alertsdropdown",
           "value": "AlertsDropdown"

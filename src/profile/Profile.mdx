@@ -2,11 +2,22 @@
 name: Profile
 ---
 
-import { Playground, PropsTable } from 'docz'
+import { Playground, PropsTable } from "docz";
 import { ProfileItems } from "./ProfileItems";
 import { AlertsDropdown } from "./AlertsDropdown";
 import { InboxDropdown } from "./InboxDropdown";
 import { UserAvatarDropdown } from "./UserAvatarDropdown";
+
+# Profile
+
+An scope to manage all presentational components around profile displaying, such as:
+
+- **AlertsDropdown**: displays an icon that toggles dropdown with alerts
+- **InboxDropdown**: displays an icon that toggles dropdown with messages
+- **UserAvatarDropdown**: displays an icon or picture if available that toggles dropdown with profile actions
+- **ProfileItems**: serves as a wrapper to hold the composition of all profile components together
+
+This module expose all the components as they are being intended to use as isolated pieces to render data
 
 ## AlertsDropdown
 
