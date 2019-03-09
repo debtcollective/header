@@ -19,7 +19,7 @@
     "lint": "eslint ./",
     "pretty-quick": "pretty-quick",
     "semantic-release": "semantic-release",
-    "start": "react-scripts start",
+    "start": "PORT=8080 react-scripts start",
     "test": "react-scripts test"
   },
   "eslintConfig": {
