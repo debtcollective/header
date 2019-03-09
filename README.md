@@ -29,6 +29,13 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Launches a server with components documentation sorted by scopes.
 
+## Contributing
+
+- We enforce the usage of semantic commits throught https://commitizen.github.io/cz-cli/
+- The scope for semantic commits belongs to first level folder from `src/` unless changes are outside of `src` folder
+- While Material UI support `withStyles` we prefer the usage of https://www.styled-components.com to do so, often needing to apply extra specificity to allow styles to being applied
+- Some UI pieces from Material UI needs unique identifiers, so we use constants in the same file but with a format to avoid conflicts like so: `const <ELEMENT_TYPE>_NAME = "@@<scope>/<component>/<element_type>";`
+
 ## Learn More
 
 Some information missing? Make sure to check out [Create React App local document](./CRA.md)
