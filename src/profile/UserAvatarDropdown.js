@@ -7,6 +7,7 @@ import discourseService from "../common/DiscourseService";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { translate } from "../locales";
 import { withStyles } from "@material-ui/core/styles";
 
 const getSrcPath = (src, size) => {
@@ -30,9 +31,15 @@ const Dropdown = ({ anchorEl, handleClose }) => (
     open={Boolean(anchorEl)}
     onClose={handleClose}
   >
-    <MenuItem onClick={handleClose}>Profile</MenuItem>
-    <MenuItem onClick={handleClose}>My account</MenuItem>
-    <MenuItem onClick={handleClose}>Logout</MenuItem>
+    <MenuItem onClick={handleClose}>
+      {translate("profile.actions.profile")}
+    </MenuItem>
+    <MenuItem onClick={handleClose}>
+      {translate("profile.actions.account")}
+    </MenuItem>
+    <MenuItem onClick={handleClose}>
+      {translate("profile.actions.logout")}
+    </MenuItem>
   </Menu>
 );
 
