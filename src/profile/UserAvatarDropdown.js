@@ -2,27 +2,22 @@
 
 import * as React from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { Avatar as MUAvatar } from "@material-ui/core";
+import styled from "styled-components";
 import { translate } from "../locales";
-import { withStyles } from "@material-ui/core/styles";
 import { interpolateAvatarUrl, prependDiscourseUrl } from "../common/helpers";
 
 const DROPDOWN_NAME = "@@profile/avatar/dropdown";
 
-const AvatarStyled = withStyles({
-  smallAvatar: {
-    height: 32,
-    width: 32,
-  },
-})(({ src, classes }) => (
-  <Avatar
-    src={prependDiscourseUrl(interpolateAvatarUrl(src, 65))}
-    className={classes.smallAvatar}
-  />
-));
+const Avatar = styled(MUAvatar)`
+  && {
+    width: 2rem;
+    height: 2rem;
+  }
+`;
 
 const Dropdown = ({ anchorEl, handleClose }) => (
   <Menu
@@ -74,7 +69,11 @@ export class UserAvatarDropdown extends React.Component<Props, State> {
           onClick={this.handleClick}
         >
           {avatarSrc ? (
-            <AvatarStyled src={user.avatar_template} />
+            <Avatar
+              src={prependDiscourseUrl(
+                interpolateAvatarUrl(user.avatar_template, 65)
+              )}
+            />
           ) : (
             <AccountCircle />
           )}
