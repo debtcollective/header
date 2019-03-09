@@ -10,6 +10,8 @@ import { translate } from "../locales";
 import { withStyles } from "@material-ui/core/styles";
 import { interpolateAvatarUrl, prependDiscourseUrl } from "../common/helpers";
 
+const DROPDOWN_NAME = "@@profile/avatar/dropdown";
+
 const AvatarStyled = withStyles({
   smallAvatar: {
     height: 32,
@@ -24,7 +26,7 @@ const AvatarStyled = withStyles({
 
 const Dropdown = ({ anchorEl, handleClose }) => (
   <Menu
-    id='simple-menu'
+    id={DROPDOWN_NAME}
     anchorEl={anchorEl}
     open={Boolean(anchorEl)}
     onClose={handleClose}
@@ -48,6 +50,7 @@ type Props = {
 type State = {
   anchorEl: ?EventTarget,
 };
+
 export class UserAvatarDropdown extends React.Component<Props, State> {
   static defaultProps = {
     user: {},
@@ -60,16 +63,24 @@ export class UserAvatarDropdown extends React.Component<Props, State> {
   render() {
     const { user } = this.props;
     const { anchorEl } = this.state;
+    const avatarSrc = user.avatar_template;
 
     return (
-      <IconButton color='inherit' onClick={this.handleClick}>
-        {user.avatar_template ? (
-          <AvatarStyled src={user.avatar_template} />
-        ) : (
-          <AccountCircle />
-        )}
+      <React.Fragment>
+        <IconButton
+          color='inherit'
+          aria-owns={anchorEl ? DROPDOWN_NAME : undefined}
+          aria-haspopup='true'
+          onClick={this.handleClick}
+        >
+          {avatarSrc ? (
+            <AvatarStyled src={user.avatar_template} />
+          ) : (
+            <AccountCircle />
+          )}
+        </IconButton>
         <Dropdown anchorEl={anchorEl} handleClose={this.handleClose} />
-      </IconButton>
+      </React.Fragment>
     );
   }
 
