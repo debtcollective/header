@@ -3,17 +3,12 @@
 import * as React from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Avatar from "@material-ui/core/Avatar";
-import discourseService from "../common/DiscourseService";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { translate } from "../locales";
 import { withStyles } from "@material-ui/core/styles";
-
-const getSrcPath = (src, size) => {
-  const path = src.replace("{size}", size);
-  return `${discourseService.baseUrl}/${path}`;
-};
+import { interpolateAvatarUrl, prependDiscourseUrl } from "../common/helpers";
 
 const AvatarStyled = withStyles({
   smallAvatar: {
@@ -21,7 +16,10 @@ const AvatarStyled = withStyles({
     width: 32,
   },
 })(({ src, classes }) => (
-  <Avatar src={getSrcPath(src, 65)} className={classes.smallAvatar} />
+  <Avatar
+    src={prependDiscourseUrl(interpolateAvatarUrl(src, 65))}
+    className={classes.smallAvatar}
+  />
 ));
 
 const Dropdown = ({ anchorEl, handleClose }) => (
