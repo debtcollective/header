@@ -1,6 +1,12 @@
 // @flow
 import * as React from "react";
-import { AppBar as MUAppBar, Toolbar } from "@material-ui/core/";
+import styled from "styled-components";
+import { AppBar as MUAppBar, Toolbar as MUToolbar } from "@material-ui/core/";
+
+const Toolbar = styled(MUToolbar)({
+  flexDirection: "row",
+  justifyContent: "space-between",
+});
 
 export const AppBar = ({ children }: { children: React.Node }) => (
   /* styles to render items as expected */
