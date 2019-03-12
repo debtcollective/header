@@ -1,85 +1,68 @@
-export default (() => {
+// @flow
+
+const getDiscourseEndpoint = () => {
   const discourseEndpoint = process.env.REACT_APP_DISCOURSE_ENDPOINT;
 
   if (!discourseEndpoint) {
     throw new Error("You must provide a valid Discourse enpoint");
   }
 
-  const baseOptions = (token, extendWith) => {
-    return {
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        ...(token ? { "X-CSRF-Token": token } : {}),
-      },
-      ...extendWith,
-    };
+  return discourseEndpoint;
+};
+
+const buildOptions = (token, extendWith) => {
+  return {
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      ...(token ? { "X-CSRF-Token": token } : {}),
+    },
+    ...extendWith,
   };
+};
 
-  const getOptions = token => baseOptions(token);
-  const postOptions = token => baseOptions(token, { method: "post" });
-  const putOptions = token => baseOptions(token, { method: "put" });
-  const deleteOptions = token => baseOptions(token, { method: "delete" });
+export default class DiscourseService {
+  static BASE_URL = getDiscourseEndpoint();
 
-  class DiscourseService {
-    constructor() {
-      this.token = null;
-      this.baseUrl = discourseEndpoint;
-    }
+  static REQUEST_TOKEN = null;
 
-    goTo(path) {
-      window.open(`${discourseEndpoint}/${path}`, "_blank");
-    }
+  static requestBaseOptions = (extendWith: ?Object = {}): Object =>
+    buildOptions(DiscourseService.getToken(), extendWith);
 
-    refreshToken = () => {
-      return this.token
-        ? Promise.resolve(this.token)
-        : fetch(`${discourseEndpoint}/session/csrf.json`)
-            .then(res => res.json())
-            .then(({ csrf }) => {
-              this.token = csrf;
-              return this.token;
-            });
-    };
+  static getToken = () => DiscourseService.REQUEST_TOKEN;
 
-    get = (url, options = {}) => {
-      return this.refreshToken().then(token =>
-        fetch(`${discourseEndpoint}/${url}`, {
-          ...getOptions(token),
-          ...options,
-        })
-      );
-    };
+  static setToken = (token: ?string) =>
+    (DiscourseService.REQUEST_TOKEN = token);
 
-    post = (url, options = {}) => {
-      return this.refreshToken().then(token =>
-        fetch(`${discourseEndpoint}/${url}`, {
-          ...postOptions(token),
-          ...options,
-        })
-      );
-    };
+  static resetToken = () => DiscourseService.setToken(null);
 
-    put = (url, options = {}) => {
-      return this.refreshToken().then(token =>
-        fetch(`${discourseEndpoint}/${url}`, {
-          ...putOptions(token),
-          ...options,
-        })
-      );
-    };
-
-    delete = (url, options = {}) => {
-      return this.refreshToken().then(token =>
-        fetch(`${discourseEndpoint}/${url}`, {
-          ...deleteOptions(token),
-          ...options,
-        })
-      );
-    };
+  static goTo(path: string): void {
+    window.open(`${DiscourseService.BASE_URL}/${path}`, "_blank");
   }
 
-  const discourseService = new DiscourseService();
+  static refreshToken = async () => {
+    const url = `${DiscourseService.BASE_URL}/session/csrf.json`;
 
-  return discourseService;
-})();
+    if (DiscourseService.getToken()) {
+      return Promise.resolve(DiscourseService.getToken());
+    }
+
+    const response = await fetch(url);
+    const { csrf: token } = await response.json();
+
+    DiscourseService.setToken(token);
+
+    return token;
+  };
+
+  static get = async (url: string, options: Object = {}) => {
+    await DiscourseService.refreshToken();
+    const response = await fetch(`${DiscourseService.BASE_URL}/${url}`, {
+      ...DiscourseService.requestBaseOptions(),
+      ...options,
+    });
+    const result = await response.json();
+
+    return result;
+  };
+}
