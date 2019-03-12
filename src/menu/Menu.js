@@ -25,7 +25,7 @@ export class Menu extends React.Component<Props, State> {
 
     return (
       <div>
-        <IconButton color='inherit' aria-label='Menu' onClick={this.toggleMenu}>
+        <IconButton color="inherit" aria-label="Menu" onClick={this.toggleMenu}>
           <MenuIcon open={open} />
         </IconButton>
         <Drawer open={open} onClose={this.toggleMenu}>

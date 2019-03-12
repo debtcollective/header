@@ -16,10 +16,10 @@ export class SessionActions extends React.Component<Props> {
   render() {
     return (
       <div>
-        <Button color='inherit' onClick={this.createSession("login")}>
+        <Button color="inherit" onClick={this.createSession("login")}>
           {translate("session.actions.login")}
         </Button>
-        <Button color='inherit' onClick={this.createSession("signup")}>
+        <Button color="inherit" onClick={this.createSession("signup")}>
           {translate("session.actions.signup")}
         </Button>
       </div>

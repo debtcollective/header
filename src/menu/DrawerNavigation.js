@@ -8,7 +8,7 @@ import React from "react";
 export const DrawerNavigation = ({ links }: { links: Array<Link> }) => (
   <List>
     {links.map((link, index) => (
-      <ListItem button component='a' key={index} href={link.href}>
+      <ListItem button component="a" key={index} href={link.href}>
         <ListItemText primary={link.text} />
       </ListItem>
     ))}

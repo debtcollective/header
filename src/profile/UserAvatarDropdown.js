@@ -63,9 +63,9 @@ export class UserAvatarDropdown extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <IconButton
-          color='inherit'
+          color="inherit"
           aria-owns={anchorEl ? DROPDOWN_NAME : undefined}
-          aria-haspopup='true'
+          aria-haspopup="true"
           onClick={this.handleClick}
         >
           {avatarSrc ? (

@@ -6,8 +6,8 @@ import MailIcon from "@material-ui/icons/Mail";
 import React from "react";
 
 export const InboxDropdown = ({ messages }: { messages: Array<Message> }) => (
-  <IconButton color='inherit'>
-    <Badge badgeContent={messages.length} color='secondary'>
+  <IconButton color="inherit">
+    <Badge badgeContent={messages.length} color="secondary">
       <MailIcon />
     </Badge>
   </IconButton>
