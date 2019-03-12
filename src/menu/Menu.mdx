@@ -1,0 +1,49 @@
+---
+name: Menu
+---
+
+import { Playground, PropsTable } from "docz";
+import Menu from "./";
+
+# Menu
+
+All related to the menu, such as: icon, toggle logic, drawer and navigation, this module only exposes a menu component and all the asides pieces are intended to be used internally
+
+<PropsTable of={Menu} />
+
+## Basic usage
+
+<Playground>
+  <Menu
+    links={[
+      { text: "Admin", href: "/admin/disputes", roles: ["admin"] },
+      { text: "My Disputes", href: "/disputes/my" },
+      { text: "Dispute Your Debt", href: "/" },
+      { text: "Community", href: "https://community.debtcollective.org" },
+      { text: "Events", href: "https://community.debtcollective.org/calendar" },
+      {
+        text: "The Power Report",
+        href: "https://powerreport.debtcollective.org",
+      },
+      { text: "Donate", href: "http://tools.debtcollective.org/donate" },
+      {
+        text: "About the Debt Collective",
+        href: "https://debtcollective.org#about",
+      },
+    ]}
+  />
+</Playground>
+
+## Types
+
+```
+type Role = "admin" | "guest"
+```
+
+```
+type Link = {
+  text: string,
+  href: string,
+  roles?: Array<Role>
+};
+```
