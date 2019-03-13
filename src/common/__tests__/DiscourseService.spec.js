@@ -13,12 +13,13 @@ describe("DiscourseService", () => {
 
   describe("refreshToken", () => {
     const tokenResponse = {
-      json: () => Promise.resolve({ csrf: faker.random.uuid(), ok: true }),
+      json: () => Promise.resolve({ csrf: faker.random.uuid() }),
+      ok: true,
     };
 
     const randomResponse = {
-      json: () =>
-        Promise.resolve({ data: faker.random.objectElement(), ok: true }),
+      json: () => Promise.resolve({ data: faker.random.objectElement() }),
+      ok: true,
     };
 
     beforeEach(() => {
@@ -67,11 +68,13 @@ describe("DiscourseService", () => {
     const valueToMatch = faker.random.word();
     const tokenToMatch = faker.random.uuid();
     const tokenResponse = {
-      json: () => Promise.resolve({ csrf: tokenToMatch, ok: true }),
+      json: () => Promise.resolve({ csrf: tokenToMatch }),
+      ok: true,
     };
 
     const randomResponse = {
-      json: () => Promise.resolve({ data: valueToMatch, ok: true }),
+      json: () => Promise.resolve({ data: valueToMatch }),
+      ok: true,
     };
 
     beforeEach(() => {

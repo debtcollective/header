@@ -48,7 +48,9 @@ export default class DiscourseService {
     }
 
     const response = await fetch(url);
-    const { csrf: token } = await response.json();
+    const {
+      csrf: token,
+    } = await DiscourseService.prototype.parseResponseToJSON(response);
 
     DiscourseService.setToken(token);
 
@@ -61,8 +63,18 @@ export default class DiscourseService {
       ...DiscourseService.requestBaseOptions(),
       ...options,
     });
-    const result = await response.json();
+    const result = await DiscourseService.prototype.parseResponseToJSON(
+      response
+    );
 
     return result;
   };
+
+  parseResponseToJSON(response: Response): Promise<Object> {
+    if (response.ok) {
+      return response.json();
+    }
+
+    return Promise.resolve({});
+  }
 }
