@@ -4,13 +4,12 @@ import DiscourseService from "../DiscourseService";
 import faker from "faker";
 
 describe("DiscourseService", () => {
+  const baseUrl = process.env.REACT_APP_DISCOURSE_ENDPOINT || "";
+
   it("allows to navigate to a Discourse page", () => {
     window.open = jest.fn();
     DiscourseService.goTo("foo");
-    expect(window.open).toHaveBeenCalledWith(
-      "http://localhost:3000/foo",
-      "_blank"
-    );
+    expect(window.open).toHaveBeenCalledWith(`${baseUrl}/foo`, "_blank");
   });
 
   describe("refreshToken", () => {
@@ -68,7 +67,6 @@ describe("DiscourseService", () => {
   });
 
   describe("XHR requests", () => {
-    const baseUrl = process.env.REACT_APP_DISCOURSE_ENDPOINT || "";
     const valueToMatch = faker.random.word();
     const tokenToMatch = faker.random.uuid();
     const tokenResponse = {
