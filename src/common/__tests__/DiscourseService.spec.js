@@ -35,7 +35,7 @@ describe("DiscourseService", () => {
       const initialToken = DiscourseService.getToken();
       const refreshedToken = await DiscourseService.refreshToken();
 
-      expect(initialToken).toBeNull();
+      expect(initialToken).toBe("");
       expect(DiscourseService.getToken()).toEqual(refreshedToken);
     });
 
@@ -44,10 +44,12 @@ describe("DiscourseService", () => {
         .spyOn(window, "fetch")
         .mockImplementationOnce(() => Promise.resolve(tokenResponse))
         .mockImplementationOnce(() => Promise.resolve(randomResponse));
-      const spyOnRefreshToken = jest.spyOn(DiscourseService, "refreshToken");
 
+      const initialToken = DiscourseService.getToken();
       await DiscourseService.get();
-      expect(spyOnRefreshToken).toHaveBeenCalledTimes(1);
+
+      expect(initialToken).toBe("");
+      expect(DiscourseService.getToken().length).toBeGreaterThan(1);
     });
 
     it("returns the saved token if available", async () => {
@@ -64,7 +66,7 @@ describe("DiscourseService", () => {
   });
 
   describe("XHR requests", () => {
-    const baseUrl = process.env.REACT_APP_DISCOURSE_ENDPOINT;
+    const baseUrl = `${process.env.REACT_APP_DISCOURSE_ENDPOINT}`;
     const valueToMatch = faker.random.word();
     const tokenToMatch = faker.random.uuid();
     const tokenResponse = {
@@ -102,10 +104,10 @@ describe("DiscourseService", () => {
       });
     });
 
-    xit("allows to send POST request to a given path", () => {});
+    it("allows to send POST request to a given path", () => {});
 
-    xit("allows to send PUT request to a given path", () => {});
+    it("allows to send PUT request to a given path", () => {});
 
-    xit("allows to send DELETE request to a given path", () => {});
+    it("allows to send DELETE request to a given path", () => {});
   });
 });

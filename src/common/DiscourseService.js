@@ -1,6 +1,6 @@
 // @flow
 
-const getDiscourseEndpoint = () => {
+const setDiscourseEndpoint = () => {
   const discourseEndpoint = process.env.REACT_APP_DISCOURSE_ENDPOINT;
 
   if (!discourseEndpoint) {
@@ -21,60 +21,66 @@ const buildOptions = (token, extendWith) => {
   };
 };
 
-export default class DiscourseService {
-  static BASE_URL = getDiscourseEndpoint();
-
-  static REQUEST_TOKEN = null;
-
-  static requestBaseOptions = (extendWith: ?Object = {}): Object =>
-    buildOptions(DiscourseService.getToken(), extendWith);
-
-  static getToken = () => DiscourseService.REQUEST_TOKEN;
-
-  static setToken = (token: ?string) =>
-    (DiscourseService.REQUEST_TOKEN = token);
-
-  static resetToken = () => DiscourseService.setToken(null);
-
-  static goTo(path: string): void {
-    window.open(`${DiscourseService.BASE_URL}/${path}`, "_blank");
+const parseResponseToJSON = (response: Response): Promise<Object> => {
+  if (response.ok) {
+    return response.json();
   }
 
-  static refreshToken = async () => {
-    const url = `${DiscourseService.BASE_URL}/session/csrf.json`;
+  return Promise.resolve({});
+};
 
-    if (DiscourseService.getToken()) {
-      return Promise.resolve(DiscourseService.getToken());
-    }
+const BASE_URL = setDiscourseEndpoint();
 
-    const response = await fetch(url);
-    const {
-      csrf: token,
-    } = await DiscourseService.prototype.parseResponseToJSON(response);
+let REQUEST_TOKEN = "";
 
-    DiscourseService.setToken(token);
+export const getBaseUrl = (): string => BASE_URL;
 
-    return token;
-  };
+export const setToken = (token: string): string => (REQUEST_TOKEN = token);
 
-  static get = async (url: string, options: Object = {}) => {
-    await DiscourseService.refreshToken();
-    const response = await fetch(`${DiscourseService.BASE_URL}/${url}`, {
-      ...DiscourseService.requestBaseOptions(),
-      ...options,
-    });
-    const result = await DiscourseService.prototype.parseResponseToJSON(
-      response
-    );
+export const resetToken = (): string => setToken("");
 
-    return result;
-  };
+export const getToken = (): string => REQUEST_TOKEN;
 
-  parseResponseToJSON(response: Response): Promise<Object> {
-    if (response.ok) {
-      return response.json();
-    }
+export const refreshToken = async () => {
+  const url = `${getBaseUrl()}/session/csrf.json`;
 
-    return Promise.resolve({});
+  if (getToken()) {
+    return Promise.resolve(getToken());
   }
-}
+
+  const response = await fetch(url);
+  const { csrf: token } = await parseResponseToJSON(response);
+
+  setToken(token);
+
+  return token;
+};
+
+export const requestBaseOptions = (extendWith: ?Object = {}): Object =>
+  buildOptions(getToken(), extendWith);
+
+export const get = async (url: string, options: Object = {}) => {
+  await refreshToken();
+  const response = await fetch(`${getBaseUrl()}/${url}`, {
+    ...requestBaseOptions(),
+    ...options,
+  });
+  const result = await parseResponseToJSON(response);
+
+  return result;
+};
+
+export const goTo = (path: string): void => {
+  window.open(`${getBaseUrl()}/${path}`, "_blank");
+};
+
+export default {
+  get,
+  getBaseUrl,
+  getToken,
+  goTo,
+  refreshToken,
+  requestBaseOptions,
+  resetToken,
+  setToken,
+};

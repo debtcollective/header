@@ -10,5 +10,5 @@ export const interpolateAvatarUrl = (
 };
 
 export const prependDiscourseUrl = (path: string): string => {
-  return `${DiscourseService.BASE_URL}/${path}`;
+  return `${DiscourseService.getBaseUrl()}/${path}`;
 };
