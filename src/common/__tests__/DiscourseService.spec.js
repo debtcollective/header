@@ -1,3 +1,5 @@
+// @flow
+
 import DiscourseService from "../DiscourseService";
 import faker from "faker";
 
@@ -46,7 +48,7 @@ describe("DiscourseService", () => {
         .mockImplementationOnce(() => Promise.resolve(randomResponse));
 
       const initialToken = DiscourseService.getToken();
-      await DiscourseService.get();
+      await DiscourseService.get("/foo.json");
 
       expect(initialToken).toBe("");
       expect(DiscourseService.getToken().length).toBeGreaterThan(1);
@@ -66,7 +68,7 @@ describe("DiscourseService", () => {
   });
 
   describe("XHR requests", () => {
-    const baseUrl = `${process.env.REACT_APP_DISCOURSE_ENDPOINT}`;
+    const baseUrl = process.env.REACT_APP_DISCOURSE_ENDPOINT || "";
     const valueToMatch = faker.random.word();
     const tokenToMatch = faker.random.uuid();
     const tokenResponse = {
