@@ -17,8 +17,6 @@ const getUser = async (): Promise<?User> => {
 
     return get(response, "current_user", null);
   } catch (e) {
-    console.error(e);
-
     return null;
   }
 };
