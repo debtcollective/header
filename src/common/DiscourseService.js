@@ -33,15 +33,15 @@ const BASE_URL = setDiscourseEndpoint();
 
 let REQUEST_TOKEN = "";
 
-export const getBaseUrl = (): string => BASE_URL;
+const getBaseUrl = (): string => BASE_URL;
 
-export const setToken = (token: string): string => (REQUEST_TOKEN = token);
+const setToken = (token: string): string => (REQUEST_TOKEN = token);
 
-export const resetToken = (): string => setToken("");
+const resetToken = (): string => setToken("");
 
-export const getToken = (): string => REQUEST_TOKEN;
+const getToken = (): string => REQUEST_TOKEN;
 
-export const refreshToken = async () => {
+const refreshToken = async () => {
   const url = `${getBaseUrl()}/session/csrf.json`;
 
   if (getToken()) {
@@ -56,10 +56,10 @@ export const refreshToken = async () => {
   return token;
 };
 
-export const requestBaseOptions = (extendWith: ?Object = {}): Object =>
+const requestBaseOptions = (extendWith: ?Object = {}): Object =>
   buildOptions(getToken(), extendWith);
 
-export const get = async (url: string, options: Object = {}) => {
+const get = async (url: string, options: Object = {}) => {
   await refreshToken();
   const response = await fetch(`${getBaseUrl()}/${url}`, {
     ...requestBaseOptions(),
@@ -70,7 +70,7 @@ export const get = async (url: string, options: Object = {}) => {
   return result;
 };
 
-export const goTo = (path: string): void => {
+const goTo = (path: string): void => {
   window.open(`${getBaseUrl()}/${path}`, "_blank");
 };
 
