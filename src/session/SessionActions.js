@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Button from "@material-ui/core/Button";
-import { SessionService } from "./SessionService";
+import SessionService from "./SessionService";
 import { translate } from "../locales";
 
 type Props = {

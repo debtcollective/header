@@ -1,21 +1,26 @@
 // @flow
 
-import discourseService from "../common/DiscourseService";
+import DiscourseService from "../common/DiscourseService";
 import get from "lodash/get";
 
-export class SessionService {
-  static getUser() {
-    return discourseService
-      .get("session/current.json")
-      .then((json: ?APISessionCurrent) => get(json, "current_user", null))
-      .catch(e => console.error(e) && null);
+export default class SessionService {
+  static async getUser() {
+    try {
+      const response = await DiscourseService.get("session/current.json");
+
+      return get(response, "current_user", null);
+    } catch (e) {
+      console.error(e);
+
+      return null;
+    }
   }
 
   static login() {
-    discourseService.goTo("login");
+    DiscourseService.goTo("login");
   }
 
   static signup() {
-    discourseService.goTo("signup");
+    DiscourseService.goTo("signup");
   }
 }
