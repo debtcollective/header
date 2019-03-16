@@ -61,3 +61,8 @@ declare type User = {
   unread_private_messages: number,
   username: string,
 };
+
+// API Responses
+declare type APISessionCurrent = {
+  current_user: User,
+};

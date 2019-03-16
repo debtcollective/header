@@ -1,6 +1,6 @@
 // @flow
 
-import discourseService from "./DiscourseService";
+import DiscourseService from "./DiscourseService";
 
 export const interpolateAvatarUrl = (
   avatarTemplateUrl: string,
@@ -10,5 +10,5 @@ export const interpolateAvatarUrl = (
 };
 
 export const prependDiscourseUrl = (path: string): string => {
-  return `${discourseService.baseUrl}/${path}`;
+  return `${DiscourseService.getBaseUrl()}/${path}`;
 };

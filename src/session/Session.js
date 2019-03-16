@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { SessionActions } from "./SessionActions";
-import { SessionService } from "./SessionService";
+import SessionService from "./SessionService";
 
 type Props = {
   children?: React.Node,
