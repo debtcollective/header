@@ -5,7 +5,7 @@ import { SessionActions } from "./SessionActions";
 import SessionService from "./SessionService";
 
 type Props = {
-  children?: React.Node,
+  children: ({ user: User }) => React.Node,
   service: SessionHandler,
 };
 
@@ -14,6 +14,7 @@ type State = {
 };
 export class Session extends React.Component<Props, State> {
   static defaultProps = {
+    children: () => null,
     service: SessionService,
   };
 
@@ -35,7 +36,6 @@ export class Session extends React.Component<Props, State> {
     const { children } = this.props;
 
     return user ? (
-      // $FlowFixMe
       children({ user })
     ) : (
       <SessionActions onUserLoggedIn={this.updateUser} />
