@@ -3,7 +3,12 @@
 import "jest-dom/extend-expect";
 import React from "react";
 import { Session } from "../Session";
-import { cleanup, render, waitForElement } from "react-testing-library";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  waitForElement,
+} from "react-testing-library";
 
 describe("<Session />", () => {
   afterEach(() => {
@@ -13,14 +18,16 @@ describe("<Session />", () => {
   it("renders a set of actions to login and signup", () => {
     const service = {
       getUser: () => Promise.resolve(undefined),
-      login: () => undefined,
-      signup: () => undefined,
+      login: jest.fn(),
+      signup: jest.fn(),
     };
 
     const { getByText } = render(<Session service={service} />);
+    fireEvent.click(getByText(/signup/i));
+    fireEvent.click(getByText(/login/i));
 
-    expect(getByText(/signup/i)).toBeTruthy();
-    expect(getByText(/login/i)).toBeTruthy();
+    expect(service.login).toHaveBeenCalledTimes(1);
+    expect(service.signup).toHaveBeenCalledTimes(1);
   });
 
   describe("when service request is successfull", () => {
@@ -28,8 +35,8 @@ describe("<Session />", () => {
       const userData = { username: "John Doe" };
       const service = {
         getUser: () => Promise.resolve(userData),
-        login: () => undefined,
-        signup: () => undefined,
+        login: jest.fn(),
+        signup: jest.fn(),
       };
 
       const { getByText } = render(
