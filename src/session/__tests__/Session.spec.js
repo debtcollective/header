@@ -19,6 +19,7 @@ describe("<Session />", () => {
     const service = {
       getUser: () => Promise.resolve(undefined),
       login: jest.fn(),
+      logout: jest.fn().mockResolvedValue(true),
       signup: jest.fn(),
     };
 
@@ -36,6 +37,7 @@ describe("<Session />", () => {
       const service = {
         getUser: () => Promise.resolve(userData),
         login: jest.fn(),
+        logout: jest.fn().mockResolvedValue(true),
         signup: jest.fn(),
       };
 

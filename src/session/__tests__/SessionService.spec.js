@@ -59,4 +59,30 @@ describe("SessionService", () => {
 
     expect(spy).toHaveBeenLastCalledWith("signup");
   });
+
+  describe("logout", () => {
+    it("return true when successful", done => {
+      const response = { ok: true, status: 200 };
+      DiscourseService.reqDelete = jest
+        .fn()
+        .mockImplementationOnce(() => Promise.resolve(response));
+
+      SessionService.logout("janedoe").then(result => {
+        expect(result).toBeTruthy();
+        done();
+      });
+    });
+
+    it("return false when error", done => {
+      const response = { ok: false, status: 500 };
+      DiscourseService.reqDelete = jest
+        .fn()
+        .mockImplementationOnce(() => Promise.reject(response));
+
+      SessionService.logout("janedoe").then(result => {
+        expect(result).toBeFalsy();
+        done();
+      });
+    });
+  });
 });

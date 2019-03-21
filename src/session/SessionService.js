@@ -21,8 +21,19 @@ const getUser = async (): Promise<?User> => {
   }
 };
 
+const logout = async (username: string): Promise<boolean> => {
+  try {
+    await DiscourseService.reqDelete(`/session/${username}`);
+
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
 export default {
   getUser,
   login,
+  logout,
   signup,
 };

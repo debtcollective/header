@@ -70,6 +70,18 @@ const get = async (url: string, options: Object = {}) => {
   return result;
 };
 
+const reqDelete = async (url: string, options: Object = {}) => {
+  await refreshToken();
+
+  const response = await fetch(`${getBaseUrl()}/${url}`, {
+    ...requestBaseOptions({ method: "delete" }),
+    ...options,
+  });
+  const result = await parseResponseToJSON(response);
+
+  return result;
+};
+
 const goTo = (path: string): void => {
   window.open(`${getBaseUrl()}/${path}`, "_blank");
 };
@@ -80,6 +92,7 @@ export default {
   getToken,
   goTo,
   refreshToken,
+  reqDelete,
   requestBaseOptions,
   resetToken,
   setToken,

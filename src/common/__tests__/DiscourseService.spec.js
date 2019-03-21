@@ -104,10 +104,42 @@ describe("DiscourseService", () => {
       });
     });
 
-    it("allows to send POST request to a given path", () => {});
+    it("allows to send DELETE request to a given path", async () => {
+      window.fetch = jest
+        .fn()
+        .mockReturnValueOnce({
+          json: () => Promise.resolve({ csrf: "token-fake-fixed-value" }),
+          ok: true,
+        })
+        .mockReturnValueOnce(
+          Promise.resolve({ json: () => "foo deleted", ok: true })
+        );
 
-    it("allows to send PUT request to a given path", () => {});
+      const response = await DiscourseService.reqDelete("foo.json");
 
-    it("allows to send DELETE request to a given path", () => {});
+      expect(response).toEqual("foo deleted");
+      expect(window.fetch).toHaveBeenCalledTimes(2);
+      expect(window.fetch).toHaveBeenNthCalledWith(
+        1,
+        `${baseUrl}/session/csrf.json`
+      );
+      expect(window.fetch.mock.calls[1]).toMatchInlineSnapshot(`
+Array [
+  "http://localhost:3000/foo.json",
+  Object {
+    "credentials": "include",
+    "headers": Object {
+      "Accept": "application/json",
+      "X-CSRF-Token": "token-fake-fixed-value",
+    },
+    "method": "delete",
+  },
+]
+`);
+    });
+
+    xit("allows to send POST request to a given path", () => {});
+
+    xit("allows to send PUT request to a given path", () => {});
   });
 });

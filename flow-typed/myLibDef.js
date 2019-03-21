@@ -1,6 +1,7 @@
 declare type SessionHandler = {
-  getUser(): Promise<any>,
+  getUser(): Promise<Object>,
   login(): void,
+  logout(username: string): Promise<boolean>,
   signup(): void,
 };
 
