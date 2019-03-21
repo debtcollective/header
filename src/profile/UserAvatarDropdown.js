@@ -72,8 +72,8 @@ const Dropdown = ({ anchorEl, handleClose, onClickLogout, user }) => (
         {translate("profile.actions.account")}
       </Link>
     </MenuItem>
-    <MenuItem onClick={onClickLogout}>
-      {translate("profile.actions.logout")}
+    <MenuItem aria-labelledby="btn-logout" onClick={onClickLogout}>
+      <Link underline="none">{translate("profile.actions.logout")}</Link>
     </MenuItem>
   </Menu>
 );
