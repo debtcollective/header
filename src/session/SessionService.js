@@ -23,7 +23,7 @@ const getUser = async (): Promise<?User> => {
 
 const logout = async (username: string): Promise<boolean> => {
   try {
-    await DiscourseService.reqDelete(`/session/${username}`);
+    await DiscourseService.reqDelete(`session/${username}`);
 
     return true;
   } catch (error) {
