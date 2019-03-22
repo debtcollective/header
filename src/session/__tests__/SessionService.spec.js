@@ -63,12 +63,26 @@ describe("SessionService", () => {
   describe("logout", () => {
     it("return true when successful", done => {
       const response = { ok: true, status: 200 };
-      DiscourseService.reqDelete = jest
-        .fn()
-        .mockImplementationOnce(() => Promise.resolve(response));
+      const spyOnReload = jest
+        .spyOn(window.location, "reload")
+        .mockImplementation(jest.fn());
+      const spyOnRequest = jest
+        .spyOn(DiscourseService, "reqDelete")
+        .mockResolvedValueOnce(response);
 
       SessionService.logout("janedoe").then(result => {
+        expect(spyOnRequest.mock.calls[0]).toMatchInlineSnapshot(
+          `
+Array [
+  "session/janedoe",
+  Object {
+    "redirect": "manual",
+  },
+]
+`
+        );
         expect(result).toBeTruthy();
+        expect(spyOnReload).toBeCalledTimes(1);
         done();
       });
     });
