@@ -10,7 +10,36 @@ const setDiscourseEndpoint = () => {
   return discourseEndpoint;
 };
 
-const buildOptions = (token, extendWith) => {
+const parseResponseToJSON = (response: Response): Promise<Object> => {
+  if (response.ok) {
+    return response.json();
+  }
+
+  return Promise.resolve({});
+};
+
+const BASE_URL = setDiscourseEndpoint();
+const getBaseUrl = (): string => BASE_URL;
+
+let CSRF_TOKEN = "";
+const setCSRFToken = (token: string): string => (CSRF_TOKEN = token);
+const resetCSRFToken = (): string => setCSRFToken("");
+
+const getCSRFToken = async () => {
+  if (CSRF_TOKEN) {
+    return Promise.resolve(CSRF_TOKEN);
+  }
+
+  const url = `${getBaseUrl()}/session/csrf.json`;
+  const response = await fetch(url, { credentials: "include" });
+  const { csrf: token } = await parseResponseToJSON(response);
+
+  setCSRFToken(token);
+
+  return token;
+};
+
+const requestOptions = (token: string = "", extendWith: Object = {}) => {
   return {
     credentials: "include",
     headers: {
@@ -21,48 +50,9 @@ const buildOptions = (token, extendWith) => {
   };
 };
 
-const parseResponseToJSON = (response: Response): Promise<Object> => {
-  if (response.ok) {
-    return response.json();
-  }
-
-  return Promise.resolve({});
-};
-
-const BASE_URL = setDiscourseEndpoint();
-
-let REQUEST_TOKEN = "";
-
-const getBaseUrl = (): string => BASE_URL;
-
-const setToken = (token: string): string => (REQUEST_TOKEN = token);
-
-const resetToken = (): string => setToken("");
-
-const getToken = (): string => REQUEST_TOKEN;
-
-const refreshToken = async () => {
-  const url = `${getBaseUrl()}/session/csrf.json`;
-
-  if (getToken()) {
-    return Promise.resolve(getToken());
-  }
-
-  const response = await fetch(url);
-  const { csrf: token } = await parseResponseToJSON(response);
-
-  setToken(token);
-
-  return token;
-};
-
-const requestBaseOptions = (extendWith: ?Object = {}): Object =>
-  buildOptions(getToken(), extendWith);
-
 const get = async (url: string, options: Object = {}) => {
-  await refreshToken();
   const response = await fetch(`${getBaseUrl()}/${url}`, {
-    ...requestBaseOptions(),
+    ...requestOptions(),
     ...options,
   });
   const result = await parseResponseToJSON(response);
@@ -71,10 +61,10 @@ const get = async (url: string, options: Object = {}) => {
 };
 
 const reqDelete = async (url: string, options: Object = {}) => {
-  await refreshToken();
+  const token = await getCSRFToken();
 
   const response = await fetch(`${getBaseUrl()}/${url}`, {
-    ...requestBaseOptions({ method: "delete" }),
+    ...requestOptions(token, { method: "delete" }),
     ...options,
   });
   const result = await parseResponseToJSON(response);
@@ -89,11 +79,10 @@ const goTo = (path: string): void => {
 export default {
   get,
   getBaseUrl,
-  getToken,
+  getCSRFToken,
   goTo,
-  refreshToken,
   reqDelete,
-  requestBaseOptions,
-  resetToken,
-  setToken,
+  requestOptions,
+  resetCSRFToken,
+  setCSRFToken,
 };
