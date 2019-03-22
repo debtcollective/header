@@ -67,10 +67,20 @@ describe("DiscourseService", () => {
       const { data } = response;
 
       expect(data).toEqual(valueToMatch);
-      expect(window.fetch).toHaveBeenNthCalledWith(1, `${baseUrl}/foo.json`, {
-        credentials: "include",
-        headers: { Accept: "application/json" },
-      });
+      expect(window.fetch).toHaveBeenCalledTimes(1);
+      expect(window.fetch.mock.calls[0]).toMatchInlineSnapshot(
+        `
+Array [
+  "http://localhost:3000/foo.json",
+  Object {
+    "credentials": "include",
+    "headers": Object {
+      "Accept": "application/json",
+    },
+  },
+]
+`
+      );
     });
 
     it("allows to send DELETE request to a given path", async () => {
@@ -88,11 +98,14 @@ describe("DiscourseService", () => {
 
       expect(response).toEqual("foo deleted");
       expect(window.fetch).toHaveBeenCalledTimes(2);
-      expect(window.fetch).toHaveBeenNthCalledWith(
-        1,
-        `${baseUrl}/session/csrf.json`,
-        { credentials: "include" }
-      );
+      expect(window.fetch.mock.calls[0]).toMatchInlineSnapshot(`
+Array [
+  "http://localhost:3000/session/csrf.json",
+  Object {
+    "credentials": "include",
+  },
+]
+`);
       expect(window.fetch.mock.calls[1]).toMatchInlineSnapshot(`
 Array [
   "http://localhost:3000/foo.json",
