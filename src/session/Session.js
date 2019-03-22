@@ -23,12 +23,7 @@ export class Session extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    window.addEventListener("focus", this.getUser);
     this.getUser();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("focus", this.getUser);
   }
 
   render() {
