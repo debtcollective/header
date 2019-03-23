@@ -4,6 +4,7 @@ import * as React from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
+import SessionService from "../session/SessionService";
 import styled from "styled-components";
 import { translate } from "../locales";
 import { interpolateAvatarUrl, prependDiscourseUrl } from "../common/helpers";
@@ -46,7 +47,7 @@ const MenuItem = styled(MUMenuItem)`
   }
 `;
 
-const Dropdown = ({ anchorEl, handleClose, user }) => (
+const Dropdown = ({ anchorEl, handleClose, onClickLogout, user }) => (
   <Menu
     id={DROPDOWN_NAME}
     anchorEl={anchorEl}
@@ -71,20 +72,15 @@ const Dropdown = ({ anchorEl, handleClose, user }) => (
         {translate("profile.actions.account")}
       </Link>
     </MenuItem>
-    <MenuItem onClick={handleClose}>
-      <Link
-        target="_blank"
-        underline="none"
-        href={prependDiscourseUrl("logout")}
-      >
-        {translate("profile.actions.logout")}
-      </Link>
+    <MenuItem aria-labelledby="btn-logout" onClick={onClickLogout}>
+      <Link underline="none">{translate("profile.actions.logout")}</Link>
     </MenuItem>
   </Menu>
 );
 
 type Props = {
   user: User,
+  service: SessionHandler,
 };
 
 type State = {
@@ -93,6 +89,7 @@ type State = {
 
 export class UserAvatarDropdown extends React.Component<Props, State> {
   static defaultProps = {
+    service: SessionService,
     user: {},
   };
 
@@ -111,7 +108,7 @@ export class UserAvatarDropdown extends React.Component<Props, State> {
           color="inherit"
           aria-owns={anchorEl ? DROPDOWN_NAME : undefined}
           aria-haspopup="true"
-          onClick={this.handleClick}
+          onClick={this.toggle}
         >
           {avatarSrc ? (
             <Avatar
@@ -128,17 +125,24 @@ export class UserAvatarDropdown extends React.Component<Props, State> {
         <Dropdown
           anchorEl={anchorEl}
           handleClose={this.handleClose}
+          onClickLogout={this.onClickLogout}
           user={user}
         />
       </React.Fragment>
     );
   }
 
-  handleClick = (e: Event) => {
+  toggle = (e: Event) => {
     this.setState({ anchorEl: e.currentTarget });
   };
 
   handleClose = () => {
     this.setState({ anchorEl: null });
+  };
+
+  onClickLogout = () => {
+    const { user } = this.props;
+    this.props.service.logout(user.username);
+    this.handleClose();
   };
 }

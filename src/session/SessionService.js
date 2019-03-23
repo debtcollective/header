@@ -21,8 +21,23 @@ const getUser = async (): Promise<?User> => {
   }
 };
 
+const logout = async (username: string): Promise<boolean> => {
+  try {
+    await DiscourseService.reqDelete(`session/${username}`, {
+      // avoid fall error when trying to fetch redirected route after logout
+      redirect: "manual",
+    });
+    window.location.reload();
+
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
 export default {
   getUser,
   login,
+  logout,
   signup,
 };

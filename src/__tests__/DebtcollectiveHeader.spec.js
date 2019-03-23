@@ -71,9 +71,7 @@ describe("<DebtcollectiveHeader />", () => {
       expect(getByText(/account/i).getAttribute("href")).toMatchInlineSnapshot(
         "\"http://localhost:3000/u/johndoe/preferences/account\""
       );
-      expect(getByText(/logout/i).getAttribute("href")).toMatchInlineSnapshot(
-        "\"http://localhost:3000/logout\""
-      );
+      expect(getByText(/logout/i)).toBeTruthy();
     });
   });
 });

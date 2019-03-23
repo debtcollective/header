@@ -23,22 +23,17 @@ export class Session extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    window.addEventListener("focus", this.getUser);
     this.getUser();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("focus", this.getUser);
   }
 
   render() {
     const { user } = this.state;
-    const { children } = this.props;
+    const { children, service } = this.props;
 
     return user ? (
       children({ user })
     ) : (
-      <SessionActions onUserLoggedIn={this.updateUser} />
+      <SessionActions onLogin={service.login} onSignup={service.signup} />
     );
   }
 
