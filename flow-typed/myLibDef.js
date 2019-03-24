@@ -13,9 +13,31 @@ declare type Link = {
   roles?: Array<Role>,
 };
 
-declare type Alert = {};
+declare type Notification = {
+  created_at: string,
+  data: {
+    display_username: string,
+    group_id: number,
+    topic_title: string,
+  },
+  fancy_title: string,
+  id: number,
+  notification_type: number,
+  post_number: number,
+  read: false,
+  slug: string,
+  topic_id: number,
+};
 
-declare type Message = {};
+declare type Alert = {
+  ...Notification,
+  notification_type: 5 | 6,
+};
+
+declare type Message = {
+  ...Notification,
+  /* all other types but the Alert ones */
+};
 
 declare type User = {
   admin: boolean,
