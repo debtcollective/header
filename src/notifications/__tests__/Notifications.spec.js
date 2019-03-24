@@ -9,7 +9,7 @@ import NotificationService from "../NotificationService";
 import React from "react";
 import { cleanup, render, waitForElement } from "react-testing-library";
 
-const renderNotifications = (props: Object) => {
+const renderNotifications = (props: { user: $Shape<User> }) => {
   return render(
     <Notifications {...props}>
       {({ alerts, messages }) => {
