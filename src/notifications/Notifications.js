@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from "react";
+import { normaliseUserNotifications } from "./normaliser";
 import NotificationService from "./NotificationService";
 
 type Props = {
@@ -40,11 +41,12 @@ export class Notifications extends React.Component<Props, State> {
 
     if (unreadNotifications > 0) {
       const { notifications } = await NotificationService.getNotifications();
-
-      this.setState({
+      const normalisedNotifications = normaliseUserNotifications({
         alerts: [notifications[0]],
         messages: [notifications[1]],
       });
+
+      this.setState(normalisedNotifications);
 
       return true;
     }

@@ -1,7 +1,9 @@
 // @flow
 jest.mock("../NotificationService");
+jest.mock("../normaliser", { normaliseUserNotifications: i => i });
 
 import "jest-dom/extend-expect";
+import { normaliseUserNotifications } from "../normaliser";
 import { Notifications } from "../Notifications";
 import notificationsData from "./__fixtures__/notifications";
 import NotificationService from "../NotificationService";
@@ -42,6 +44,7 @@ describe("<Notifications />", () => {
     const messagesElem = await waitForElement(() => getByTestId("messages"));
 
     expect(NotificationService.getNotifications).toBeCalledTimes(1);
+    expect(normaliseUserNotifications).toHaveBeenCalledTimes(1);
     expect(alertsElem.firstChild).toMatchInlineSnapshot(
       "[{\"created_at\":\"2019-02-16T14:37:18.891Z\",\"data\":{\"display_username\":\"system\",\"group_id\":1,\"topic_title\":\"Backup failed\"},\"fancy_title\":\"Backup failed\",\"id\":1,\"notification_type\":7,\"post_number\":1,\"read\":false,\"slug\":\"backup-failed\",\"topic_id\":11}]"
     );
