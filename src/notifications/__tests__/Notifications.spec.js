@@ -31,14 +31,18 @@ describe("<Notifications />", () => {
     jest.clearAllMocks();
   });
 
+  beforeAll(() => {
+    NotificationService.getNotifications = jest
+      .fn()
+      .mockResolvedValue(notificationsData);
+  });
+
   it("renders props of shaped object of messages and alerts", async () => {
     const userData = {
       unread_notifications: 10,
       username: "johndoe",
     };
-    NotificationService.getNotifications = jest
-      .fn()
-      .mockResolvedValue(notificationsData);
+
     const { getByTestId } = renderNotifications({ user: userData });
     const alertsElem = await waitForElement(() => getByTestId("alerts"));
     const messagesElem = await waitForElement(() => getByTestId("messages"));
@@ -63,6 +67,7 @@ describe("<Notifications />", () => {
       const messagesElem = await waitForElement(() => getByTestId("messages"));
 
       expect(NotificationService.getNotifications).toBeCalledTimes(0);
+      expect(normaliseUserNotifications).toHaveBeenCalledTimes(0);
       expect(alertsElem.firstChild).toMatchInlineSnapshot("[]");
       expect(messagesElem.firstChild).toMatchInlineSnapshot("[]");
     });
