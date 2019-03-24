@@ -29,15 +29,9 @@ declare type Notification = {
   topic_id: number,
 };
 
-declare type Alert = {
-  ...Notification,
-  notification_type: 5 | 6,
-};
+declare type Alert = Notification;
 
-declare type Message = {
-  ...Notification,
-  /* all other types but the Alert ones */
-};
+declare type Message = Notification;
 
 declare type User = {
   admin: boolean,

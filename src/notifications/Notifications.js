@@ -40,11 +40,8 @@ export class Notifications extends React.Component<Props, State> {
     const { unread_notifications: unreadNotifications } = this.props.user;
 
     if (unreadNotifications > 0) {
-      const { notifications } = await NotificationService.getNotifications();
-      const normalisedNotifications = normaliseUserNotifications({
-        alerts: [notifications[0]],
-        messages: [notifications[1]],
-      });
+      const notifications = await NotificationService.getNotifications();
+      const normalisedNotifications = normaliseUserNotifications(notifications);
 
       this.setState(normalisedNotifications);
 
