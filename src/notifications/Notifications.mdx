@@ -2,6 +2,60 @@
 name: Notifications
 ---
 
+import { Playground, PropsTable } from "docz";
+import Notifications from "./";
+import { notifications } from "./__tests__/__fixtures__/notifications";
+
 # Notifications
 
 Use a given user object in order to fetch the user notifications and inject them in a normalised shape to its children
+
+<PropsTable of={Notifications} />
+
+## Render notifications props
+
+When a given user has _unread_ notifications, the component will inject notifications data categorised by messages and alerts
+
+<Playground>
+  <Notifications
+    user={{ unread_notifications: 3 }}
+    service={{ getNotifications: () => Promise.resolve(notifications) }}
+  >
+    {({ alerts, messages }) => (
+      <div>
+        <b>Alerts</b>
+        <p>{JSON.stringify(alerts)}</p>
+        <b>Messages</b>
+        <p>{JSON.stringify(messages)}</p>
+      </div>
+    )}
+  </Notifications>
+</Playground>
+
+## Types
+
+```
+type Notification = {
+  created_at: string,
+  data: {
+    display_username: string,
+    group_id: number,
+    topic_title: string,
+  },
+  fancy_title: string,
+  id: number,
+  notification_type: number,
+  post_number: number,
+  read: false,
+  slug: string,
+  topic_id: number,
+};
+```
+
+```
+type Alert = Notification;
+```
+
+```
+type Message = Notification;
+```

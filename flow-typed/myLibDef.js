@@ -1,8 +1,12 @@
 declare type SessionHandler = {
-  getUser(): Promise<Object>,
+  getUser(): Promise<$Shape<User>>,
   login(): void,
   logout(username: string): Promise<boolean>,
   signup(): void,
+};
+
+declare type NotificationsHandler = {
+  getNotifications: () => Promise<Array<$NonMaybeType<Notification>>>,
 };
 
 declare type Role = "admin" | "guest";

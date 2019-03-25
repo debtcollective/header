@@ -5,6 +5,7 @@ import { normaliseUserNotifications } from "./normaliser";
 import NotificationService from "./NotificationService";
 
 type Props = {
+  service: NotificationsHandler,
   user: User,
   children: ({
     alerts: Array<Alert>,
@@ -18,6 +19,10 @@ type State = {
 };
 
 export class Notifications extends React.Component<Props, State> {
+  static defaultProps = {
+    service: NotificationService,
+  };
+
   state = {
     alerts: [],
     messages: [],
@@ -40,7 +45,7 @@ export class Notifications extends React.Component<Props, State> {
     const { unread_notifications: unreadNotifications } = this.props.user;
 
     if (unreadNotifications > 0) {
-      const notifications = await NotificationService.getNotifications();
+      const notifications = await this.props.service.getNotifications();
       const normalisedNotifications = normaliseUserNotifications(notifications);
 
       this.setState(normalisedNotifications);
