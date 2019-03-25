@@ -19,11 +19,15 @@ declare type Link = {
 
 declare type Notification = {
   created_at: string,
-  data: {
+  data: $Shape<{
     display_username: string,
     group_id: number,
+    original_post_id: number,
+    original_post_type: number,
+    original_username: string,
+    revision_number: number,
     topic_title: string,
-  },
+  }>,
   fancy_title: string,
   id: number,
   notification_type: number,
