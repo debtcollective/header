@@ -42,9 +42,12 @@ export class Notifications extends React.Component<Props, State> {
   }
 
   async updateUserNotifications() {
-    const { unread_notifications: unreadNotifications } = this.props.user;
+    const {
+      unread_notifications: unreadNotifications,
+      unread_private_messages: unreadPrivateMessages,
+    } = this.props.user;
 
-    if (unreadNotifications > 0) {
+    if (unreadNotifications > 0 || unreadPrivateMessages > 0) {
       const notifications = await this.props.service.getNotifications();
       const normalisedNotifications = normaliseUserNotifications(notifications);
 
