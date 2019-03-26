@@ -3,35 +3,11 @@
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import MailIcon from "@material-ui/icons/Mail";
-import styled from "styled-components";
-import { Link, Menu, MenuItem as MUMenuItem } from "@material-ui/core";
+import { MenuItem } from "./styled";
+import { Link, Menu } from "@material-ui/core";
 import React, { useState } from "react";
 
 const DROPDOWN_NAME = "@@profile/inbox/dropdown";
-
-/*
-  @TODO: <MenuItem /> on Material UI v3.9.2 doesn't have props to handle links in a better way.
-  remove added styles once there are something again to handle link children
-*/
-const MenuItem = styled(MUMenuItem)`
-  && {
-    padding: 0;
-    position: relative;
-    height: 2.4rem;
-    width: 140px;
-  }
-
-  > a {
-    position: absolute;
-    top: 0px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-  }
-`;
 
 const Dropdown = ({ anchorEl, handleClose, messages }) => (
   <Menu
