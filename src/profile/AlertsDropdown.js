@@ -68,12 +68,7 @@ export const AlertsDropdown = (
           <NotificationsIcon />
         </Badge>
       </IconButton>
-      <Dropdown
-        aria-label="AlertsDropdown"
-        anchorEl={anchorEl}
-        handleClose={handleClose}
-        alerts={alerts}
-      />
+      <Dropdown anchorEl={anchorEl} handleClose={handleClose} alerts={alerts} />
     </React.Fragment>
   );
 };

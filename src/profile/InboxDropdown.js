@@ -71,7 +71,6 @@ export const InboxDropdown = (
         </Badge>
       </IconButton>
       <Dropdown
-        aria-label="InboxDropdown"
         anchorEl={anchorEl}
         handleClose={handleClose}
         messages={messages}

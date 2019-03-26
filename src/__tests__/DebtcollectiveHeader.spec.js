@@ -3,6 +3,8 @@
 jest.mock("../session/SessionService");
 
 import DebtcollectiveHeader from "../DebtcollectiveHeader";
+import { notifications } from "../notifications/__tests__/__fixtures__/notifications";
+import NotificationService from "../notifications/NotificationService";
 import React from "react";
 import SessionService from "../session/SessionService";
 import {
@@ -50,9 +52,7 @@ describe("<DebtcollectiveHeader />", () => {
       username: "johndoe",
     };
     // $FlowFixMe
-    SessionService.getUser = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve(userData));
+    SessionService.getUser = jest.fn().mockResolvedValue(userData);
 
     it("displays user avatar to toggle a dropdown with actions", async () => {
       const { getByText, getByAltText } = render(
@@ -72,6 +72,50 @@ describe("<DebtcollectiveHeader />", () => {
         "\"http://localhost:3000/u/johndoe/preferences/account\""
       );
       expect(getByText(/logout/i)).toBeTruthy();
+    });
+
+    describe("when user has unread notifications", () => {
+      SessionService.getUser = jest
+        .fn()
+        // $FlowFixMe
+        .mockResolvedValue({ ...userData, unread_notifications: 3 });
+      NotificationService.getNotifications = jest
+        .fn()
+        .mockResolvedValue(notifications);
+
+      it("displays a set of alerts", async () => {
+        const { getByText, getByAltText, getByLabelText } = render(
+          <DebtcollectiveHeader links={links} />
+        );
+
+        await waitForElement(() => getByAltText(userData.username));
+
+        fireEvent.click(getByLabelText("AlertsToggler"));
+
+        const AlertsDropdownItem = await waitForElement(() =>
+          getByText(notifications[1].data.topic_title)
+        );
+
+        // fixture has an alert on index one
+        expect(AlertsDropdownItem).toBeTruthy();
+      });
+
+      it("displays a set of messages", async () => {
+        const { getByText, getByAltText, getByLabelText } = render(
+          <DebtcollectiveHeader links={links} />
+        );
+
+        await waitForElement(() => getByAltText(userData.username));
+
+        fireEvent.click(getByLabelText("InboxToggler"));
+
+        const InboxDropdownItem = await waitForElement(() =>
+          getByText(notifications[0].data.topic_title)
+        );
+
+        // fixture has a message on index zero
+        expect(InboxDropdownItem).toBeTruthy();
+      });
     });
   });
 });
