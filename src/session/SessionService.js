@@ -11,12 +11,13 @@ const signup = () => {
   DiscourseService.goTo("signup");
 };
 
-const getUser = async (): Promise<?User> => {
+const getUser = async (): Promise<User> => {
   try {
     const response = await DiscourseService.get("session/current.json");
 
     return get(response, "current_user", null);
   } catch (e) {
+    // $FlowFixMe
     return null;
   }
 };

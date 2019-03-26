@@ -48,66 +48,45 @@ type Props = {
   service: SessionHandler,
 };
 
-type State = {
-  anchorEl: ?EventTarget,
+export const UserAvatarDropdown = (
+  { user, service }: Props = { service: SessionService, user: {} }
+) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClose = () => setAnchorEl(null);
+  const toggle = (e: Event) => setAnchorEl(e.currentTarget);
+  const avatarSrc = user.avatar_template;
+
+  const onClickLogout = () => {
+    service.logout(user.username);
+    handleClose();
+  };
+
+  return (
+    <React.Fragment>
+      <IconButton
+        color="inherit"
+        aria-owns={anchorEl ? DROPDOWN_NAME : undefined}
+        aria-haspopup="true"
+        onClick={toggle}
+      >
+        {avatarSrc ? (
+          <Avatar
+            alt={user.username}
+            aria-label={user.username}
+            src={prependDiscourseUrl(
+              interpolateAvatarUrl(user.avatar_template, 65)
+            )}
+          />
+        ) : (
+          <AccountCircle aria-label={user.username} />
+        )}
+      </IconButton>
+      <Dropdown
+        anchorEl={anchorEl}
+        handleClose={handleClose}
+        onClickLogout={onClickLogout}
+        user={user}
+      />
+    </React.Fragment>
+  );
 };
-
-export class UserAvatarDropdown extends React.Component<Props, State> {
-  static defaultProps = {
-    service: SessionService,
-    user: {},
-  };
-
-  state = {
-    anchorEl: null,
-  };
-
-  render() {
-    const { user } = this.props;
-    const { anchorEl } = this.state;
-    const avatarSrc = user.avatar_template;
-
-    return (
-      <React.Fragment>
-        <IconButton
-          color="inherit"
-          aria-owns={anchorEl ? DROPDOWN_NAME : undefined}
-          aria-haspopup="true"
-          onClick={this.toggle}
-        >
-          {avatarSrc ? (
-            <Avatar
-              alt={user.username}
-              aria-label={user.username}
-              src={prependDiscourseUrl(
-                interpolateAvatarUrl(user.avatar_template, 65)
-              )}
-            />
-          ) : (
-            <AccountCircle aria-label={user.username} />
-          )}
-        </IconButton>
-        <Dropdown
-          anchorEl={anchorEl}
-          handleClose={this.handleClose}
-          onClickLogout={this.onClickLogout}
-          user={user}
-        />
-      </React.Fragment>
-    );
-  }
-
-  toggle = (e: Event) => {
-    this.setState({ anchorEl: e.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
-  onClickLogout = () => {
-    const { user } = this.props;
-    this.props.service.logout(user.username);
-    this.handleClose();
-  };
-}

@@ -23,6 +23,7 @@ describe("<Session />", () => {
       signup: jest.fn(),
     };
 
+    // $FlowFixMe
     const { getByText } = render(<Session service={service} />);
     fireEvent.click(getByText(/signup/i));
     fireEvent.click(getByText(/login/i));
@@ -42,6 +43,7 @@ describe("<Session />", () => {
       };
 
       const { getByText } = render(
+        // $FlowFixMe
         <Session service={service}>
           {({ user }) => <div>{user.username}</div>}
         </Session>
