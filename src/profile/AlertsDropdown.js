@@ -58,6 +58,7 @@ export const AlertsDropdown = (
   return (
     <React.Fragment>
       <IconButton
+        aria-label="AlertsToggler"
         color="inherit"
         aria-owns={anchorEl ? DROPDOWN_NAME : undefined}
         aria-haspopup="true"
@@ -67,7 +68,12 @@ export const AlertsDropdown = (
           <NotificationsIcon />
         </Badge>
       </IconButton>
-      <Dropdown anchorEl={anchorEl} handleClose={handleClose} alerts={alerts} />
+      <Dropdown
+        aria-label="AlertsDropdown"
+        anchorEl={anchorEl}
+        handleClose={handleClose}
+        alerts={alerts}
+      />
     </React.Fragment>
   );
 };
