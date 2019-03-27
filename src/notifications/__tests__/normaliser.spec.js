@@ -1,7 +1,7 @@
 // @flow
 
 import { normaliseUserNotifications } from "../normaliser";
-import { notifications } from "./__fixtures__/notifications";
+import { notifications } from "../../__fixtures__/notifications";
 
 describe("normaliser", () => {
   it("returns categorised notifications by alerts and messages", () => {

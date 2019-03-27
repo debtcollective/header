@@ -4,7 +4,7 @@ jest.mock("../NotificationService");
 import "jest-dom/extend-expect";
 import * as normalisers from "../normaliser";
 import { Notifications } from "../Notifications";
-import { notifications } from "./__fixtures__/notifications";
+import { notifications } from "../../__fixtures__/notifications";
 import NotificationService from "../NotificationService";
 import React from "react";
 import { cleanup, render, waitForElement } from "react-testing-library";
