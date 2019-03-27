@@ -24,9 +24,7 @@ const Dropdown = ({ anchorEl, handleClose, alerts }) => (
   </Menu>
 );
 
-export const AlertsDropdown = (
-  { alerts }: { alerts: Array<Alert> } = { alerts: [] }
-) => {
+export const AlertsDropdown = ({ alerts }: { alerts: Array<Alert> }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClose = () => setAnchorEl(null);
   const toggle = e => setAnchorEl(e.currentTarget);
@@ -47,4 +45,8 @@ export const AlertsDropdown = (
       <Dropdown anchorEl={anchorEl} handleClose={handleClose} alerts={alerts} />
     </React.Fragment>
   );
+};
+
+AlertsDropdown.defaultProps = {
+  alerts: [],
 };

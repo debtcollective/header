@@ -48,9 +48,7 @@ type Props = {
   service: SessionHandler,
 };
 
-export const UserAvatarDropdown = (
-  { user, service }: Props = { service: SessionService, user: {} }
-) => {
+export const UserAvatarDropdown = ({ user, service }: Props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClose = () => setAnchorEl(null);
   const toggle = (e: Event) => setAnchorEl(e.currentTarget);
@@ -89,4 +87,9 @@ export const UserAvatarDropdown = (
       />
     </React.Fragment>
   );
+};
+
+UserAvatarDropdown.defaultProps = {
+  service: SessionService,
+  user: {},
 };
