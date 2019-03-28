@@ -65,10 +65,12 @@ describe("<DebtcollectiveHeader />", () => {
 
       fireEvent.click(userAvatar);
 
-      expect(getByText(/profile/i).getAttribute("href")).toMatchInlineSnapshot(
-        "\"http://localhost:3000/u/johndoe\""
-      );
-      expect(getByText(/account/i).getAttribute("href")).toMatchInlineSnapshot(
+      expect(
+        getByText(/profile/i).parentElement.getAttribute("href")
+      ).toMatchInlineSnapshot("\"http://localhost:3000/u/johndoe\"");
+      expect(
+        getByText(/account/i).parentElement.getAttribute("href")
+      ).toMatchInlineSnapshot(
         "\"http://localhost:3000/u/johndoe/preferences/account\""
       );
       expect(getByText(/logout/i)).toBeTruthy();

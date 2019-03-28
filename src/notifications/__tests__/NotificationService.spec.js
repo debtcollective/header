@@ -1,5 +1,5 @@
 import DiscourseService from "../../common/DiscourseService";
-import { notifications } from "./__fixtures__/notifications";
+import { notifications } from "../../__fixtures__/notifications";
 import NotificationService from "../NotificationService";
 
 describe("NotificationService", () => {
