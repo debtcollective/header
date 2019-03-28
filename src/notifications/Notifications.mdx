@@ -3,16 +3,16 @@ name: Notifications
 ---
 
 import { Playground, PropsTable } from "docz";
-import Notifications from "./";
-import { notifications } from "./__tests__/__fixtures__/notifications";
+import Notifications, { NotificationsPanel } from "./";
+import { notifications } from "../__fixtures__/notifications";
 
 # Notifications
 
-Use a given user object in order to fetch the user notifications and inject them in a normalised shape to its children
+This scope will expose the `Notifications` component that uses a given user object in order to fetch the user notifications and inject them in a normalised shape to its children. Besides, it also exposes a NotificationPanel in order to be a component to being able to display notifications as expected and perform actions on them
 
 <PropsTable of={Notifications} />
 
-## Render notifications props
+## Basic usage
 
 When a given user has _unread_ notifications, the component will inject notifications data categorised by messages and alerts
 
@@ -30,6 +30,14 @@ When a given user has _unread_ notifications, the component will inject notifica
       </div>
     )}
   </Notifications>
+</Playground>
+
+## NotificationsPanel
+
+<PropsTable of={NotificationsPanel} />
+
+<Playground>
+  <NotificationsPanel notifications={[{}, {}, {}, {}, {}, {}, {}, {}]} />
 </Playground>
 
 ## Types

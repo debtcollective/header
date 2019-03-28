@@ -77,8 +77,13 @@
         },
         {
           "depth": 2,
-          "slug": "render-notifications-props",
-          "value": "Render notifications props"
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        },
+        {
+          "depth": 2,
+          "slug": "notificationspanel",
+          "value": "NotificationsPanel"
         },
         {
           "depth": 2,
