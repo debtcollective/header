@@ -3,8 +3,8 @@
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import MailIcon from "@material-ui/icons/Mail";
-import { MenuItem } from "./styled";
-import { Link, Menu } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import { Menu, MenuItem } from "@material-ui/core";
 import React, { useState } from "react";
 
 const DROPDOWN_NAME = "@@profile/inbox/dropdown";
@@ -17,10 +17,15 @@ const Dropdown = ({ anchorEl, handleClose, messages }) => (
     onClose={handleClose}
   >
     {messages.map(message => (
-      <MenuItem key={message.created_at} onClick={handleClose}>
-        <Link href={message.data.original_post_id}>
+      <MenuItem
+        component="a"
+        href={message.data.original_post_id}
+        key={message.created_at}
+        onClick={handleClose}
+      >
+        <Typography color="primary" variant="subtitle1">
           {message.data.topic_title}
-        </Link>
+        </Typography>
       </MenuItem>
     ))}
   </Menu>

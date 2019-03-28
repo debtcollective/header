@@ -2,9 +2,8 @@
 
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
-import { MenuItem } from "./styled";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { Link, Menu } from "@material-ui/core";
+import { Menu, MenuItem, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 
 const DROPDOWN_NAME = "@@profile/alerts/dropdown";
@@ -17,8 +16,15 @@ const Dropdown = ({ anchorEl, handleClose, alerts }) => (
     onClose={handleClose}
   >
     {alerts.map(alert => (
-      <MenuItem key={alert.created_at} onClick={handleClose}>
-        <Link href={alert.data.original_post_id}>{alert.data.topic_title}</Link>
+      <MenuItem
+        component="a"
+        href={alert.data.original_post_id}
+        key={alert.created_at}
+        onClick={handleClose}
+      >
+        <Typography color="primary" variant="subtitle1">
+          {alert.data.topic_title}
+        </Typography>
       </MenuItem>
     ))}
   </Menu>

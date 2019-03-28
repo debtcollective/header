@@ -2,13 +2,12 @@
 
 import * as React from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import { Avatar } from "./styled";
 import IconButton from "@material-ui/core/IconButton";
-import { Link } from "@material-ui/core";
-import Menu from "@material-ui/core/Menu";
 import SessionService from "../session/SessionService";
 import { translate } from "../locales";
-import { Avatar, MenuItem } from "./styled";
 import { interpolateAvatarUrl, prependDiscourseUrl } from "../common/helpers";
+import { Menu, MenuItem, Typography } from "@material-ui/core";
 
 const DROPDOWN_NAME = "@@profile/avatar/dropdown";
 
@@ -19,26 +18,37 @@ const Dropdown = ({ anchorEl, handleClose, onClickLogout, user }) => (
     open={Boolean(anchorEl)}
     onClose={handleClose}
   >
-    <MenuItem onClick={handleClose}>
-      <Link
-        target="_blank"
-        underline="none"
-        href={prependDiscourseUrl(`u/${user.username}`)}
-      >
+    <MenuItem
+      component="a"
+      target="_blank"
+      underline="none"
+      href={prependDiscourseUrl(`u/${user.username}`)}
+      onClick={handleClose}
+    >
+      <Typography color="primary" variant="subtitle1">
         {translate("profile.actions.profile")}
-      </Link>
+      </Typography>
     </MenuItem>
-    <MenuItem onClick={handleClose}>
-      <Link
-        target="_blank"
-        underline="none"
-        href={prependDiscourseUrl(`u/${user.username}/preferences/account`)}
-      >
+    <MenuItem
+      component="a"
+      target="_blank"
+      underline="none"
+      href={prependDiscourseUrl(`u/${user.username}/preferences/account`)}
+      onClick={handleClose}
+    >
+      <Typography color="primary" variant="subtitle1">
         {translate("profile.actions.account")}
-      </Link>
+      </Typography>
     </MenuItem>
-    <MenuItem aria-labelledby="btn-logout" onClick={onClickLogout}>
-      <Link underline="none">{translate("profile.actions.logout")}</Link>
+    <MenuItem
+      component="a"
+      underline="none"
+      aria-labelledby="btn-logout"
+      onClick={onClickLogout}
+    >
+      <Typography color="primary" variant="subtitle1">
+        {translate("profile.actions.logout")}
+      </Typography>
     </MenuItem>
   </Menu>
 );
