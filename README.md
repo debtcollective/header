@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/debtcollective/header.svg?branch=master)](https://travis-ci.org/debtcollective/header)
+[![codecov](https://codecov.io/gh/debtcollective/header/branch/master/graph/badge.svg)](https://codecov.io/gh/debtcollective/header)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, the principal commands you may want to know are:

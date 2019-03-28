@@ -20,7 +20,8 @@
     "pretty-quick": "pretty-quick",
     "semantic-release": "semantic-release",
     "start": "PORT=8080 react-scripts start",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
