@@ -1,15 +1,17 @@
 // @flow
 
 import { getNotificationIcon } from "./helpers";
+import moment from "moment";
 import { NotificationsPanelComponents as NPC } from "./styled";
 import React from "react";
 import { Typography } from "@material-ui/core";
 
-export const NotificationsPanel = ({
-  notifications,
-}: {
+type Props = {
+  handleClose: Function,
   notifications: Array<Notification>,
-}) => {
+};
+
+export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
   return (
     <NPC.Container>
       <NPC.Header>
@@ -17,13 +19,13 @@ export const NotificationsPanel = ({
       </NPC.Header>
       <NPC.Body>
         {notifications.map(n => (
-          <NPC.Item key={n.id}>
+          <NPC.Item key={n.created_at} onClick={handleClose}>
             {getNotificationIcon("foo")}
             <div>
-              <Typography variant="body2">
-                Achievement completed! <strong>Know your stuff I</strong>
+              <Typography variant="body2">{n.data.topic_title}</Typography>
+              <Typography variant="caption">
+                {moment(n.created_at).fromNow()}
               </Typography>
-              <Typography variant="caption">1 hour ago</Typography>
             </div>
           </NPC.Item>
         ))}
@@ -32,3 +34,5 @@ export const NotificationsPanel = ({
     </NPC.Container>
   );
 };
+
+NotificationsPanel.Caret = NPC.Caret;

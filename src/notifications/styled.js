@@ -18,13 +18,29 @@ const NotificationsPanelContainer = styled.div`
   width: 25rem;
 `;
 
+const NotificationsPanelCaret = styled.div`
+  background: ${grey[100]}
+  border: 1px solid ${grey[400]};
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  display: block;
+  height: 0.6rem;
+  position: relative;
+  top: 0.4rem;
+  transform: rotate(-45deg);
+  width: 0.6rem;
+  z-index: 1;
+`;
+
 const NotificationsPanelFooter = styled.div`
+  background: ${grey[100]}
   border-top: 1px solid ${grey[400]};
   height: 2.125rem;
 `;
 
 const NotificationsPanelHeader = styled.div`
   align-items: center;
+  background: ${grey[100]}
   border-bottom: 1px solid ${grey[400]};
   display: flex;
   height: 2.125rem;
@@ -52,6 +68,7 @@ const NotificationsPanelItem = styled.div`
 
 export const NotificationsPanelComponents = {
   Body: NotificationsPanelBody,
+  Caret: NotificationsPanelCaret,
   Container: NotificationsPanelContainer,
   Footer: NotificationsPanelFooter,
   Header: NotificationsPanelHeader,
