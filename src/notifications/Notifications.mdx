@@ -2,6 +2,7 @@
 name: Notifications
 ---
 
+import noop from "lodash/noop";
 import { Playground, PropsTable } from "docz";
 import Notifications, { NotificationsPanel } from "./";
 import { notifications } from "../__fixtures__/notifications";
@@ -37,7 +38,7 @@ When a given user has _unread_ notifications, the component will inject notifica
 <PropsTable of={NotificationsPanel} />
 
 <Playground>
-  <NotificationsPanel notifications={notifications} />
+  <NotificationsPanel notifications={notifications} handleClose={noop} />
 </Playground>
 
 ## Types

@@ -48,7 +48,10 @@ export const AlertsDropdown = ({ alerts }: { alerts: Array<Alert> }) => {
               ref={arrowProps.ref}
               style={arrowProps.style}
             />
-            <NotificationsPanel notifications={alerts} />
+            <NotificationsPanel
+              notifications={alerts}
+              handleClose={handleClose}
+            />
           </div>
         )}
       </Popper>
