@@ -1,32 +1,7 @@
 // @flow
 
 import includes from "lodash/includes";
-
-/**
- * check discourse notification types at: https://goo.gl/Lcyhp3
- * besides, keep into account that Discourse return `notification_type`
- * as a number which map to the below indexes
- */
-const notificationTypes = [
-  "mentioned",
-  "replied",
-  "quoted",
-  "edited",
-  "liked",
-  "privateMessage",
-  "invitedToPrivateMessage",
-  "inviteeAccepted",
-  "posted",
-  "movedPost",
-  "linked",
-  "grantedBadge",
-  "invitedToTopic",
-  "custom",
-  "groupMentioned",
-  "groupMessageSummary",
-  "watchingFirstPost",
-  "topicReminder",
-];
+import { notificationTypes } from "./helpers";
 
 const getMessages = notifications => {
   const messagesTypes = [notificationTypes[5], notificationTypes[6]];
