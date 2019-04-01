@@ -62,15 +62,19 @@ const iconsMapping = {
   [notificationTypes[16]]: AddComment,
 };
 
+export const getNotificationTypeName = (
+  notificationType: string | number
+): string => {
+  return typeof notificationType === "number"
+    ? notificationTypes[notificationType]
+    : notificationType;
+};
+
 export const getNotificationIcon = (
   notificationType: string | number,
   color: string = "disabled"
 ) => {
-  const notificationIndex =
-    typeof notificationType === "number"
-      ? notificationType
-      : notificationTypes.indexOf(notificationType);
-  const Icon = iconsMapping[notificationIndex];
+  const Icon = iconsMapping[getNotificationTypeName(notificationType)];
 
   return Icon ? <Icon color={color} /> : <Announcement color={color} />;
 };

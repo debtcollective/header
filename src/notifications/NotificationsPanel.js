@@ -24,7 +24,7 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
         <NPC.Body>
           {notifications.map(n => (
             <NPC.Item key={n.created_at} onClick={handleClose}>
-              {getNotificationIcon("foo")}
+              {getNotificationIcon(n.notification_type)}
               <div aria-label="NotificationItem">
                 <Typography variant="body2">{n.data.topic_title}</Typography>
                 <Typography variant="caption">
