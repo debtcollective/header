@@ -29,6 +29,16 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
             </div>
           </NPC.Item>
         ))}
+        {notifications.length === 0 && (
+          <NPC.Item>
+            {getNotificationIcon("announcement")}
+            <div aria-label="empty-feedback">
+              <Typography variant="body2">
+                <i>There is not notifications yet</i>
+              </Typography>
+            </div>
+          </NPC.Item>
+        )}
       </NPC.Body>
       <NPC.Footer />
     </NPC.Container>
