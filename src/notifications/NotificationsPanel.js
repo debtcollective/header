@@ -21,7 +21,7 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
         {notifications.map(n => (
           <NPC.Item key={n.created_at} onClick={handleClose}>
             {getNotificationIcon("foo")}
-            <div>
+            <div aria-label="NotificationItem">
               <Typography variant="body2">{n.data.topic_title}</Typography>
               <Typography variant="caption">
                 {moment(n.created_at).fromNow()}
@@ -32,7 +32,7 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
         {notifications.length === 0 && (
           <NPC.Item>
             {getNotificationIcon("announcement")}
-            <div aria-label="empty-feedback">
+            <div aria-label="EmptyFeedback">
               <Typography variant="body2">
                 <i>There is not notifications yet</i>
               </Typography>
