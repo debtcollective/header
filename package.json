@@ -54,7 +54,7 @@
     "pretty-quick": "1.10.0",
     "react-testing-library": "6.0.0",
     "semantic-release": "15.13.3",
-    "user-event": "1.4.4"
+    "user-event": "1.4.5"
   },
   "husky": {
     "hooks": {
