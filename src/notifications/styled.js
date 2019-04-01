@@ -49,8 +49,13 @@ const NotificationsPanelHeader = styled.div`
 
 const NotificationsPanelItem = styled.div`
   align-items: center;
+  border-bottom: 1px solid ${grey[400]};
   display: flex;
   padding: 0.625rem 1.875rem 0.625rem 0.625rem;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 
   > div:last-child {
     margin-left: 0.625rem;
