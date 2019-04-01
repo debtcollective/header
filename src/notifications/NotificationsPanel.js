@@ -4,6 +4,7 @@ import { getNotificationIcon } from "./helpers";
 import moment from "moment";
 import { NotificationsPanelComponents as NPC } from "./styled";
 import React from "react";
+import { translate } from "../locales";
 import { ClickAwayListener, Typography } from "@material-ui/core";
 
 type Props = {
@@ -16,7 +17,9 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
     <ClickAwayListener onClickAway={handleClose}>
       <NPC.Container>
         <NPC.Header>
-          <Typography variant="caption">Notifications</Typography>
+          <Typography variant="caption">
+            {translate("notifications.panel.title")}
+          </Typography>
         </NPC.Header>
         <NPC.Body>
           {notifications.map(n => (
@@ -35,7 +38,7 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
               {getNotificationIcon("announcement")}
               <div aria-label="EmptyFeedback">
                 <Typography variant="body2">
-                  <i>There is not notifications yet</i>
+                  <i>{translate("notifications.panel.empty")}</i>
                 </Typography>
               </div>
             </NPC.Item>
