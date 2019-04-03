@@ -101,5 +101,4 @@ export const UserAvatarDropdown = ({ user, service }: Props) => {
 
 UserAvatarDropdown.defaultProps = {
   service: SessionService,
-  user: {},
 };

@@ -11,7 +11,7 @@ const service = {
   signup: jest.fn(),
 };
 
-const user = {
+const user: $Shape<User> = {
   name: "Jane Doe",
   username: "janedoe",
 };
@@ -21,7 +21,6 @@ describe("<UserAvatarDropdown />", () => {
 
   it("handles a logout action after toggle", async () => {
     const { getByText, getByLabelText } = render(
-      // $FlowFixMe
       <UserAvatarDropdown service={service} user={user} />
     );
 

@@ -46,12 +46,11 @@ describe("<DebtcollectiveHeader />", () => {
   });
 
   describe("when user is available", () => {
-    const userData = {
+    const userData: $Shape<User> = {
       admin: false,
       avatar_template: "/user_avatar/localhost/johndoe/{size}/2_1.png",
       username: "johndoe",
     };
-    // $FlowFixMe
     SessionService.getUser = jest.fn().mockResolvedValue(userData);
 
     it("displays user avatar to toggle a dropdown with actions", async () => {
@@ -79,7 +78,6 @@ describe("<DebtcollectiveHeader />", () => {
     describe("when user has unread notifications", () => {
       SessionService.getUser = jest
         .fn()
-        // $FlowFixMe
         .mockResolvedValue({ ...userData, unread_notifications: 3 });
       NotificationService.getNotifications = jest
         .fn()

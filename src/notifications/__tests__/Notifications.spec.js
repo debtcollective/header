@@ -9,7 +9,7 @@ import NotificationService from "../NotificationService";
 import React from "react";
 import { cleanup, render, waitForElement } from "react-testing-library";
 
-const renderNotifications = (props: { user: $Shape<User> }) => {
+const renderNotifications = (props: { user: User }) => {
   return render(
     <Notifications {...props}>
       {({ alerts, messages }) => {
@@ -44,7 +44,7 @@ describe("<Notifications />", () => {
   });
 
   it("renders props of shaped object of messages and alerts", async () => {
-    const userData = {
+    const userData: $Shape<User> = {
       unread_notifications: 10,
       username: "johndoe",
     };
@@ -55,6 +55,7 @@ describe("<Notifications />", () => {
 
     expect(NotificationService.getNotifications).toBeCalledTimes(1);
     expect(spyOnNormaliseUserNotifications).toHaveBeenCalledTimes(1);
+    // eslint-disable-next-line
     expect(alertsElem.firstChild).toMatchInlineSnapshot(
       "[{\"created_at\":\"2019-03-24T10:37:18.891Z\",\"data\":{\"display_username\":\"system\",\"group_id\":1,\"topic_title\":\"Backup failed\"},\"fancy_title\":\"Backup failed\",\"id\":1,\"notification_type\":7,\"post_number\":1,\"read\":false,\"slug\":\"backup-failed\",\"topic_id\":11}]"
     );
@@ -65,7 +66,7 @@ describe("<Notifications />", () => {
 
   describe("when there is no unread notifications", () => {
     it("renders props of shaped object with empty data", async () => {
-      const userData = {
+      const userData: $Shape<User> = {
         unread_notifications: 0,
       };
       const { getByTestId } = renderNotifications({ user: userData });

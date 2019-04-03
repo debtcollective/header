@@ -1,5 +1,5 @@
 declare type SessionHandler = {
-  getUser(): Promise<User>,
+  getUser(): Promise<User | null>,
   login(): void,
   logout(username: string): Promise<boolean>,
   signup(): void,

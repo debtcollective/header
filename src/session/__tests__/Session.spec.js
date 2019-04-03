@@ -17,13 +17,12 @@ describe("<Session />", () => {
 
   it("renders a set of actions to login and signup", () => {
     const service = {
-      getUser: () => Promise.resolve(undefined),
+      getUser: () => Promise.resolve(null),
       login: jest.fn(),
       logout: jest.fn().mockResolvedValue(true),
       signup: jest.fn(),
     };
 
-    // $FlowFixMe
     const { getByText } = render(<Session service={service} />);
     fireEvent.click(getByText(/signup/i));
     fireEvent.click(getByText(/login/i));
@@ -34,7 +33,7 @@ describe("<Session />", () => {
 
   describe("when service request is successfull", () => {
     it("renders children with user info", async () => {
-      const userData = { username: "John Doe" };
+      const userData: $Shape<User> = { username: "John Doe" };
       const service = {
         getUser: () => Promise.resolve(userData),
         login: jest.fn(),
@@ -43,7 +42,6 @@ describe("<Session />", () => {
       };
 
       const { getByText } = render(
-        // $FlowFixMe
         <Session service={service}>
           {({ user }) => <div>{user.username}</div>}
         </Session>
