@@ -4764,16 +4764,6 @@ dom-serializer@0:
     domelementtype "~1.1.1"
     entities "~1.1.1"
 
-dom-testing-library@3.18.1:
-  version "3.18.1"
-  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.18.1.tgz#04f1ded8a83007eb305184ed953baf34fb2fec86"
-  integrity sha512-tp7doYDfPkbExBHnqnJFXQOeqKbTlxvyP8njIjSe9JYwAFDh5XvRi8zV7XdFigdd8KTsQaeLFZCUH5JDTukmvQ==
-  dependencies:
-    "@babel/runtime" "^7.3.4"
-    "@sheerun/mutationobserver-shim" "^0.3.2"
-    pretty-format "^24.5.0"
-    wait-for-expect "^1.1.0"
-
 dom-testing-library@3.18.2, dom-testing-library@^3.18.2:
   version "3.18.2"
   resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.18.2.tgz#07d65166743ad3299b7bee5b488e9622c31241bc"
@@ -14673,12 +14663,12 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-user-event@1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/user-event/-/user-event-1.4.5.tgz#0992f09573206f0b36d404aeaa3095434212e619"
-  integrity sha512-0mKDS4c+YYwhCvaWoOlav2uAJ19EQoN9k2p8rBkjw7Dc90efJxFgtjQwUPf6aMkEtOLCA/mftm9GBUJvAhMaqQ==
+user-event@1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/user-event/-/user-event-1.4.6.tgz#b69c32746202a0f730a77176f70d16cb3eac96ac"
+  integrity sha512-NFMO3SjlG9FHMMoY9W7epxI1AxM/3eGghqImiQz+kuLzoWIf5+EsYgxZlz1z9857DryGQR+jA2driBgqjjBS2Q==
   dependencies:
-    dom-testing-library "3.18.1"
+    dom-testing-library "3.18.2"
 
 util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"
