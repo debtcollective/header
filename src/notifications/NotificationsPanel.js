@@ -1,11 +1,11 @@
 // @flow
 
-import { getNotificationIcon } from "./helpers";
 import moment from "moment";
 import { NotificationsPanelComponents as NPC } from "./styled";
 import React from "react";
 import { translate } from "../locales";
 import { ClickAwayListener, Typography } from "@material-ui/core";
+import { getNotificationIcon, getNotificationLink } from "./helpers";
 
 type Props = {
   handleClose: Function,
@@ -23,7 +23,12 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
         </NPC.Header>
         <NPC.Body>
           {notifications.map(n => (
-            <NPC.Item key={n.created_at} onClick={handleClose}>
+            <NPC.Item
+              target="_blank"
+              href={getNotificationLink(n)}
+              key={n.created_at}
+              onClick={handleClose}
+            >
               {getNotificationIcon(n.notification_type)}
               <div aria-label="NotificationItem">
                 <Typography variant="body2">{n.data.topic_title}</Typography>

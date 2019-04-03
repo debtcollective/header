@@ -13,6 +13,7 @@ import Link from "@material-ui/icons/Link";
 import Loyalty from "@material-ui/icons/Loyalty";
 import Mail from "@material-ui/icons/Mail";
 import Person from "@material-ui/icons/Person";
+import { prependDiscourseUrl } from "../common/helpers";
 import React from "react";
 import Reply from "@material-ui/icons/Reply";
 
@@ -60,6 +61,16 @@ const iconsMapping = {
   [notificationTypes[14]]: Group,
   [notificationTypes[15]]: CenterFocusStrong,
   [notificationTypes[16]]: AddComment,
+};
+
+export const getNotificationLink = (notification: Notification) => {
+  if (!notification.topic_id || !notification.post_number) {
+    return "#";
+  }
+
+  return prependDiscourseUrl(
+    `/t/${notification.topic_id}/${notification.post_number}`
+  );
 };
 
 export const getNotificationTypeName = (

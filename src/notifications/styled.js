@@ -47,11 +47,12 @@ const NotificationsPanelHeader = styled.div`
   padding: 0 0.625rem;
 `;
 
-const NotificationsPanelItem = styled.div`
+const NotificationsPanelItem = styled.a`
   align-items: center;
   border-bottom: 1px solid ${grey[400]};
   display: flex;
   padding: 0.625rem 1.875rem 0.625rem 0.625rem;
+  text-decoration: none;
 
   &:last-of-type {
     border-bottom: none;
