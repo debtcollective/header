@@ -7,6 +7,7 @@ declare type SessionHandler = {
 
 declare type NotificationsHandler = {
   getNotifications: () => Promise<Array<$NonMaybeType<Notification>>>,
+  markAsRead: (notificationId: number) => Promise<any>,
 };
 
 declare type Role = "admin" | "guest";
