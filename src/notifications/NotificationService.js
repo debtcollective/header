@@ -17,6 +17,19 @@ const getNotifications = async (
   }
 };
 
+const markAsRead = async (notificationId: number) => {
+  try {
+    const response = await DiscourseService.put("notifications/mark-read", {
+      id: notificationId,
+    });
+
+    return response;
+  } catch (e) {
+    return null;
+  }
+};
+
 export default {
   getNotifications,
+  markAsRead,
 };
