@@ -60,6 +60,38 @@
         }
       ]
     },
+    "src/notifications/Notifications.mdx": {
+      "name": "Notifications",
+      "id": "0b3f7419a40f7b2c8f37d54e5d031918",
+      "filepath": "src/notifications/Notifications.mdx",
+      "link": "https://github.com/debtcollective/header/edit/master/src/notifications/Notifications.mdx",
+      "slug": "src-notifications-notifications",
+      "route": "/src-notifications-notifications",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "notifications",
+          "value": "Notifications"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        },
+        {
+          "depth": 2,
+          "slug": "notificationspanel",
+          "value": "NotificationsPanel"
+        },
+        {
+          "depth": 2,
+          "slug": "types",
+          "value": "Types"
+        }
+      ]
+    },
     "src/profile/Profile.mdx": {
       "name": "Profile",
       "id": "ca512db99ad435a262a1eea694f74cc6",

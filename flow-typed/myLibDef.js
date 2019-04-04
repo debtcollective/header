@@ -1,8 +1,12 @@
 declare type SessionHandler = {
-  getUser(): Promise<Object>,
+  getUser(): Promise<User | null>,
   login(): void,
   logout(username: string): Promise<boolean>,
   signup(): void,
+};
+
+declare type NotificationsHandler = {
+  getNotifications: () => Promise<Array<$NonMaybeType<Notification>>>,
 };
 
 declare type Role = "admin" | "guest";
@@ -13,9 +17,29 @@ declare type Link = {
   roles?: Array<Role>,
 };
 
-declare type Alert = {};
+declare type Notification = {
+  created_at: string,
+  data: $Shape<{
+    display_username: string,
+    group_id: number,
+    original_post_id: number,
+    original_post_type: number,
+    original_username: string,
+    revision_number: number,
+    topic_title: string,
+  }>,
+  fancy_title: string,
+  id: number,
+  notification_type: number,
+  post_number: number,
+  read: false,
+  slug: string,
+  topic_id: number,
+};
 
-declare type Message = {};
+declare type Alert = Notification;
+
+declare type Message = Notification;
 
 declare type User = {
   admin: boolean,

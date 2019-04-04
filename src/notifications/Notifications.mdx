@@ -1,0 +1,70 @@
+---
+name: Notifications
+---
+
+import noop from "lodash/noop";
+import { Playground, PropsTable } from "docz";
+import Notifications, { NotificationsPanel } from "./";
+import { notifications } from "../__fixtures__/notifications";
+
+# Notifications
+
+This scope will expose the `Notifications` component that uses a given user object in order to fetch the user notifications and inject them in a normalised shape to its children. Besides, it also exposes a NotificationPanel in order to be a component to being able to display notifications as expected and perform actions on them
+
+<PropsTable of={Notifications} />
+
+## Basic usage
+
+When a given user has _unread_ notifications, the component will inject notifications data categorised by messages and alerts
+
+<Playground>
+  <Notifications
+    user={{ unread_notifications: 3 }}
+    service={{ getNotifications: () => Promise.resolve(notifications) }}
+  >
+    {({ alerts, messages }) => (
+      <div>
+        <b>Alerts</b>
+        <p>{JSON.stringify(alerts)}</p>
+        <b>Messages</b>
+        <p>{JSON.stringify(messages)}</p>
+      </div>
+    )}
+  </Notifications>
+</Playground>
+
+## NotificationsPanel
+
+<PropsTable of={NotificationsPanel} />
+
+<Playground>
+  <NotificationsPanel notifications={notifications} handleClose={noop} />
+</Playground>
+
+## Types
+
+```
+type Notification = {
+  created_at: string,
+  data: {
+    display_username: string,
+    group_id: number,
+    topic_title: string,
+  },
+  fancy_title: string,
+  id: number,
+  notification_type: number,
+  post_number: number,
+  read: false,
+  slug: string,
+  topic_id: number,
+};
+```
+
+```
+type Alert = Notification;
+```
+
+```
+type Message = Notification;
+```

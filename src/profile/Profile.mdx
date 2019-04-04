@@ -7,6 +7,7 @@ import { ProfileItems } from "./ProfileItems";
 import { AlertsDropdown } from "./AlertsDropdown";
 import { InboxDropdown } from "./InboxDropdown";
 import { UserAvatarDropdown } from "./UserAvatarDropdown";
+import { notifications } from "../__fixtures__/notifications";
 
 # Profile
 
@@ -39,8 +40,8 @@ Serves as a wrapper to render "Profile items" section as a unit with inteded com
 
 <Playground>
   <ProfileItems>
-    <AlertsDropdown alerts={[{}, {}]} />
-    <InboxDropdown />
+    <AlertsDropdown alerts={[notifications[1]]} />
+    <InboxDropdown messages={[notifications[0], notifications[2]]} />
     <UserAvatarDropdown />
   </ProfileItems>
 </Playground>
