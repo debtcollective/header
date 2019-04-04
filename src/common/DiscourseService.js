@@ -60,6 +60,18 @@ const get = async (url: string, options: Object = {}) => {
   return result;
 };
 
+const put = async (url: string, options: Object = {}) => {
+  const token = await getCSRFToken();
+
+  const response = await fetch(`${getBaseUrl()}/${url}`, {
+    ...requestOptions(token, { method: "put" }),
+    ...options,
+  });
+  const result = await parseResponseToJSON(response);
+
+  return result;
+};
+
 const reqDelete = async (url: string, options: Object = {}) => {
   const token = await getCSRFToken();
 
@@ -81,6 +93,7 @@ export default {
   getBaseUrl,
   getCSRFToken,
   goTo,
+  put,
   reqDelete,
   requestOptions,
   resetCSRFToken,
