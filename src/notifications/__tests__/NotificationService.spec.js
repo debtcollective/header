@@ -1,3 +1,5 @@
+// @flow
+
 import DiscourseService from "../../common/DiscourseService";
 import faker from "faker";
 import { notifications } from "../../__fixtures__/notifications";
