@@ -23,24 +23,24 @@ import Reply from "@material-ui/icons/Reply";
  * as a number which map to the below indexes
  */
 export const notificationTypes = [
-  "mentioned",
-  "replied",
-  "quoted",
-  "edited",
-  "liked",
-  "privateMessage",
-  "invitedToPrivateMessage",
-  "inviteeAccepted",
-  "posted",
-  "movedPost",
-  "linked",
-  "grantedBadge",
-  "invitedToTopic",
-  "custom",
-  "groupMentioned",
-  "groupMessageSummary",
-  "watchingFirstPost",
-  "topicReminder",
+  "mentioned", // 1
+  "replied", // 2
+  "quoted", // 3
+  "edited", // 4
+  "liked", // 5
+  "privateMessage", // 6
+  "invitedToPrivateMessage", // 7
+  "inviteeAccepted", // 8
+  "posted", // 9
+  "movedPost", // 10
+  "linked", // 11
+  "grantedBadge", // 12
+  "invitedToTopic", // 13
+  "custom", // 14
+  "groupMentioned", // 15
+  "groupMessageSummary", // 16
+  "watchingFirstPost", // 17
+  "topicReminder", // 18
 ];
 
 const iconsMapping = {
@@ -77,7 +77,7 @@ export const getNotificationTypeName = (
   notificationType: string | number
 ): string => {
   return typeof notificationType === "number"
-    ? notificationTypes[notificationType]
+    ? notificationTypes[notificationType - 1]
     : notificationType;
 };
 
@@ -88,4 +88,15 @@ export const getNotificationIcon = (
   const Icon = iconsMapping[getNotificationTypeName(notificationType)];
 
   return Icon ? <Icon color={color} /> : <Announcement color={color} />;
+};
+
+export const getNotificationPresentationalData = (
+  notification: Notification
+) => {
+  const { data } = notification;
+
+  return {
+    date: notification.created_at,
+    title: data.topic_title || data.badge_name,
+  };
 };

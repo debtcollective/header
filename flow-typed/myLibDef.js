@@ -22,6 +22,10 @@ declare type Link = {
 declare type Notification = {
   created_at: string,
   data: $Shape<{
+    badge_id: number,
+    badge_name: string,
+    badge_slug: string,
+    badge_title: boolean,
     display_username: string,
     group_id: number,
     original_post_id: number,
@@ -29,6 +33,7 @@ declare type Notification = {
     original_username: string,
     revision_number: number,
     topic_title: string,
+    username: string,
   }>,
   fancy_title: string,
   id: number,

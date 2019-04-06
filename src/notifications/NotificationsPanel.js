@@ -6,7 +6,11 @@ import { NotificationsPanelComponents as NPC } from "./styled";
 import React from "react";
 import { translate } from "../locales";
 import { Button, ClickAwayListener, Typography } from "@material-ui/core";
-import { getNotificationIcon, getNotificationLink } from "./helpers";
+import {
+  getNotificationIcon,
+  getNotificationLink,
+  getNotificationPresentationalData,
+} from "./helpers";
 
 type Props = {
   handleClose: Function,
@@ -37,22 +41,26 @@ export const NotificationsPanel = ({
           </div>
         </NPC.Header>
         <NPC.Body>
-          {notifications.map(n => (
-            <NPC.Item
-              target="_blank"
-              href={getNotificationLink(n)}
-              key={n.created_at}
-              onClick={handleClose}
-            >
-              {getNotificationIcon(n.notification_type)}
-              <div aria-label="NotificationItem">
-                <Typography variant="body2">{n.data.topic_title}</Typography>
-                <Typography variant="caption">
-                  {moment(n.created_at).fromNow()}
-                </Typography>
-              </div>
-            </NPC.Item>
-          ))}
+          {notifications.map(n => {
+            const { title, date } = getNotificationPresentationalData(n);
+
+            return (
+              <NPC.Item
+                target="_blank"
+                href={getNotificationLink(n)}
+                key={n.created_at}
+                onClick={handleClose}
+              >
+                {getNotificationIcon(n.notification_type)}
+                <div aria-label="NotificationItem">
+                  <Typography variant="body2">{title}</Typography>
+                  <Typography variant="caption">
+                    {moment(date).fromNow()}
+                  </Typography>
+                </div>
+              </NPC.Item>
+            );
+          })}
           {notifications.length === 0 && (
             <NPC.Item>
               {getNotificationIcon("announcement")}
