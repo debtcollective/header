@@ -23,6 +23,10 @@ export const NotificationsPanel = ({
   service,
   notifications,
 }: Props) => {
+  const markAllRead = () => {
+    service.markAllAsRead(notifications);
+  };
+
   return (
     <ClickAwayListener onClickAway={handleClose}>
       <NPC.Container>
@@ -34,7 +38,7 @@ export const NotificationsPanel = ({
             <Button
               color="primary"
               aria-label="mark-all-read"
-              onClick={service.markAllAsRead}
+              onClick={markAllRead}
             >
               {translate("notifications.panel.action.readAll")}
             </Button>

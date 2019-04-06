@@ -50,7 +50,7 @@ describe("<NotificationsPanel />", () => {
   });
 
   describe("on click mark all as read", () => {
-    it("calls service method to do it", () => {
+    it("calls service method", () => {
       const { getByLabelText } = render(
         <NotificationsPanel {...baseProps} notifications={notifications} />
       );
@@ -59,6 +59,9 @@ describe("<NotificationsPanel />", () => {
       fireEvent.click(action);
 
       expect(baseProps.service.markAllAsRead).toHaveBeenCalledTimes(1);
+      expect(baseProps.service.markAllAsRead).toHaveBeenCalledWith(
+        notifications
+      );
     });
   });
 });
