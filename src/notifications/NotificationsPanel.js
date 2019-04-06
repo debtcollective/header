@@ -4,15 +4,20 @@ import moment from "moment";
 import { NotificationsPanelComponents as NPC } from "./styled";
 import React from "react";
 import { translate } from "../locales";
-import { ClickAwayListener, Typography } from "@material-ui/core";
+import { Button, ClickAwayListener, Typography } from "@material-ui/core";
 import { getNotificationIcon, getNotificationLink } from "./helpers";
 
 type Props = {
   handleClose: Function,
+  handleReadAll: Function,
   notifications: Array<Notification>,
 };
 
-export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
+export const NotificationsPanel = ({
+  handleClose,
+  handleReadAll,
+  notifications,
+}: Props) => {
   return (
     <ClickAwayListener onClickAway={handleClose}>
       <NPC.Container>
@@ -20,6 +25,13 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
           <Typography variant="caption">
             {translate("notifications.panel.title")}
           </Typography>
+          <Button
+            aria-label="mark-all-read"
+            variant="caption"
+            onClick={handleReadAll}
+          >
+            {translate("notifications.panel.action.readAll")}
+          </Button>
         </NPC.Header>
         <NPC.Body>
           {notifications.map(n => (
