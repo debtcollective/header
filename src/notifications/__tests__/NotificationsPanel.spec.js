@@ -9,7 +9,11 @@ import { cleanup, fireEvent, render } from "react-testing-library";
 
 const baseProps = {
   handleClose: jest.fn(),
-  handleReadAll: jest.fn(),
+  service: {
+    getNotifications: jest.fn(),
+    markAllAsRead: jest.fn(),
+    markAsRead: jest.fn(),
+  },
 };
 
 describe("<NotificationsPanel />", () => {
@@ -46,7 +50,7 @@ describe("<NotificationsPanel />", () => {
   });
 
   describe("on click mark all as read", () => {
-    it("calls handleReadAll", () => {
+    it("calls service method to do it", () => {
       const { getByLabelText } = render(
         <NotificationsPanel {...baseProps} notifications={notifications} />
       );
@@ -54,7 +58,7 @@ describe("<NotificationsPanel />", () => {
       const action = getByLabelText("mark-all-read");
       fireEvent.click(action);
 
-      expect(baseProps.handleReadAll).toHaveBeenCalledTimes(1);
+      expect(baseProps.service.markAllAsRead).toHaveBeenCalledTimes(1);
     });
   });
 });

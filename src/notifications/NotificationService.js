@@ -29,7 +29,13 @@ const markAsRead = async (notificationId: number) => {
   }
 };
 
+const markAllAsRead = async (notificationIds: Array<number>) => {
+  // FIXME: once research about how to perform the actual request we need to update this
+  return markAsRead(notificationIds[0]);
+};
+
 export default {
   getNotifications,
+  markAllAsRead,
   markAsRead,
 };

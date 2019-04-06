@@ -1,6 +1,7 @@
 // @flow
 
 import moment from "moment";
+import NotificationService from "./NotificationService";
 import { NotificationsPanelComponents as NPC } from "./styled";
 import React from "react";
 import { translate } from "../locales";
@@ -9,13 +10,13 @@ import { getNotificationIcon, getNotificationLink } from "./helpers";
 
 type Props = {
   handleClose: Function,
-  handleReadAll: Function,
+  service: NotificationsHandler,
   notifications: Array<Notification>,
 };
 
 export const NotificationsPanel = ({
   handleClose,
-  handleReadAll,
+  service,
   notifications,
 }: Props) => {
   return (
@@ -28,7 +29,7 @@ export const NotificationsPanel = ({
           <Button
             aria-label="mark-all-read"
             variant="caption"
-            onClick={handleReadAll}
+            onClick={service.markAllAsRead}
           >
             {translate("notifications.panel.action.readAll")}
           </Button>
@@ -68,3 +69,7 @@ export const NotificationsPanel = ({
 };
 
 NotificationsPanel.Caret = NPC.Caret;
+
+NotificationsPanel.defaultProps = {
+  service: NotificationService,
+};
