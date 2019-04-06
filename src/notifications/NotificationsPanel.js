@@ -26,13 +26,15 @@ export const NotificationsPanel = ({
           <Typography variant="caption">
             {translate("notifications.panel.title")}
           </Typography>
-          <Button
-            aria-label="mark-all-read"
-            variant="caption"
-            onClick={service.markAllAsRead}
-          >
-            {translate("notifications.panel.action.readAll")}
-          </Button>
+          <div className="npc-actions">
+            <Button
+              color="primary"
+              aria-label="mark-all-read"
+              onClick={service.markAllAsRead}
+            >
+              {translate("notifications.panel.action.readAll")}
+            </Button>
+          </div>
         </NPC.Header>
         <NPC.Body>
           {notifications.map(n => (
