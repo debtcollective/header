@@ -18,9 +18,11 @@ const getNotifications = async (
 };
 
 const markAsRead = async (notificationId: number) => {
+  const data = { id: notificationId };
+
   try {
     const response = await DiscourseService.put("notifications/mark-read", {
-      id: notificationId,
+      body: JSON.stringify(data),
     });
 
     return response;

@@ -47,7 +47,7 @@ describe("NotificationService", () => {
       expect(DiscourseService.put).toHaveBeenCalledTimes(1);
       expect(DiscourseService.put).toHaveBeenCalledWith(
         "notifications/mark-read",
-        { id: notifificationId }
+        { body: JSON.stringify({ id: notifificationId }) }
       );
     });
   });
