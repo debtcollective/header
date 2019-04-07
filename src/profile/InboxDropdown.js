@@ -9,9 +9,12 @@ import React, { useState } from "react";
 
 const DROPDOWN_NAME = "@@profile/inbox/dropdown";
 
-export const InboxDropdown = (
-  { messages }: { messages: Array<Message> } = { messages: [] }
-) => {
+type Props = {
+  messages: Array<Message>,
+  service: NotificationReactiveService,
+};
+
+export const InboxDropdown = ({ messages, service }: Props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClose = () => setAnchorEl(null);
   const toggle = e => (anchorEl ? handleClose() : setAnchorEl(e.currentTarget));
@@ -51,6 +54,7 @@ export const InboxDropdown = (
               style={arrowProps.style}
             />
             <NotificationsPanel
+              service={service}
               notifications={messages}
               handleClose={handleClose}
             />

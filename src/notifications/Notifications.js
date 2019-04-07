@@ -8,6 +8,7 @@ type Props = {
   service: NotificationsHandler,
   user: User,
   children: ({
+    service: NotificationReactiveService,
     alerts: Array<Alert>,
     messages: Array<Message>,
   }) => React.Node,
@@ -34,20 +35,43 @@ export class Notifications extends React.Component<Props, State> {
 
   getChildrenProps() {
     const { alerts, messages } = this.state;
+    const service = this.getReactiveService();
 
     return {
       alerts,
       messages,
+      service,
     };
   }
 
-  async updateUserNotifications() {
+  getReactiveService = (): NotificationReactiveService => {
+    const { service } = this.props;
+    const updateUserNotifications = this.updateUserNotifications.bind(this);
+
+    return {
+      getNotifications: async () => {
+        await updateUserNotifications({ force: true });
+      },
+      markAllAsRead: async () => {
+        await service.markAllAsRead();
+        updateUserNotifications({ force: true });
+      },
+      markAsRead: async (notificationId: number) => {
+        await service.markAsRead(notificationId);
+        updateUserNotifications({ force: true });
+      },
+    };
+  };
+
+  async updateUserNotifications(
+    { force }: { force: boolean } = { force: false }
+  ) {
     const {
       unread_notifications: unreadNotifications,
       unread_private_messages: unreadPrivateMessages,
     } = this.props.user;
 
-    if (unreadNotifications > 0 || unreadPrivateMessages > 0) {
+    if (unreadNotifications > 0 || unreadPrivateMessages > 0 || force) {
       const notifications = await this.props.service.getNotifications();
       const normalisedNotifications = normaliseUserNotifications(notifications);
 

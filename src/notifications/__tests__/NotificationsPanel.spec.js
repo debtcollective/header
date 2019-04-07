@@ -59,9 +59,7 @@ describe("<NotificationsPanel />", () => {
       fireEvent.click(action);
 
       expect(baseProps.service.markAllAsRead).toHaveBeenCalledTimes(1);
-      expect(baseProps.service.markAllAsRead).toHaveBeenCalledWith(
-        notifications
-      );
+      expect(baseProps.service.markAllAsRead).toHaveBeenCalledWith();
     });
   });
 });

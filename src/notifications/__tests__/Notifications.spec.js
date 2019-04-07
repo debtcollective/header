@@ -79,4 +79,66 @@ describe("<Notifications />", () => {
       expect(messagesElem.firstChild).toMatchInlineSnapshot("[]");
     });
   });
+
+  describe("reactive service", () => {
+    it("injects a service with reactive effects", () => {
+      let reactiveService;
+      const userData: $Shape<User> = {
+        unread_notifications: 10,
+        username: "johndoe",
+      };
+
+      render(
+        <Notifications user={userData}>
+          {({ service }) => {
+            reactiveService = service;
+
+            return null;
+          }}
+        </Notifications>
+      );
+
+      // $FlowFixMe
+      expect(reactiveService.getNotifications).toEqual(expect.any(Function));
+      // $FlowFixMe
+      expect(reactiveService.markAllAsRead).toEqual(expect.any(Function));
+      // $FlowFixMe
+      expect(reactiveService.markAsRead).toEqual(expect.any(Function));
+    });
+
+    it("updates Notifications state after markAllAsRead", async () => {
+      let reactiveService;
+      const userData: $Shape<User> = {
+        unread_notifications: 1,
+        username: "johndoe",
+      };
+
+      const { getByTestId } = render(
+        <Notifications user={userData}>
+          {({ alerts, messages, service }) => {
+            reactiveService = service;
+
+            return (
+              <div data-testid="data">
+                <div data-testid="alerts">{JSON.stringify(alerts)}</div>
+                <div data-testid="messages">{JSON.stringify(messages)}</div>
+              </div>
+            );
+          }}
+        </Notifications>
+      );
+
+      NotificationService.getNotifications = jest
+        .fn()
+        // $FlowFixMe
+        .mockResolvedValueOnce([{ read: true }]);
+      // $FlowFixMe
+      await reactiveService.markAllAsRead();
+      const alertsElem = await waitForElement(() => getByTestId("alerts"));
+      const messagesElem = await waitForElement(() => getByTestId("messages"));
+
+      expect(alertsElem.firstChild).toMatchInlineSnapshot("[]");
+      expect(messagesElem.firstChild).toMatchInlineSnapshot("[]");
+    });
+  });
 });

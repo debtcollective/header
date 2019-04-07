@@ -18,10 +18,10 @@ const DebtcollectiveHeader = ({ links }: { links: Array<Link> }) => (
     <Session>
       {({ user }) => (
         <Notifications user={user}>
-          {({ alerts, messages }) => (
+          {({ alerts, messages, service }) => (
             <ProfileItems>
-              <AlertsDropdown alerts={alerts} />
-              <InboxDropdown messages={messages} />
+              <AlertsDropdown service={service} alerts={alerts} />
+              <InboxDropdown service={service} messages={messages} />
               <UserAvatarDropdown user={user} />
             </ProfileItems>
           )}
