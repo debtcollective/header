@@ -38,7 +38,7 @@ describe("NotificationService", () => {
   });
 
   describe("markAsRead", () => {
-    it("sends a request to the mark notifications as read", () => {
+    it("sends a request to the mark given notification id as read", () => {
       const notifificationId = faker.random.number();
       DiscourseService.put = jest.fn().mockResolvedValueOnce(null);
 
@@ -48,6 +48,19 @@ describe("NotificationService", () => {
       expect(DiscourseService.put).toHaveBeenCalledWith(
         "notifications/mark-read",
         { body: JSON.stringify({ id: notifificationId }) }
+      );
+    });
+  });
+
+  describe("markAllAsRead", () => {
+    it("sends a request to the mark notifications as read", () => {
+      DiscourseService.put = jest.fn().mockResolvedValueOnce(null);
+
+      NotificationService.markAllAsRead();
+
+      expect(DiscourseService.put).toHaveBeenCalledTimes(1);
+      expect(DiscourseService.put).toHaveBeenCalledWith(
+        "notifications/mark-read"
       );
     });
   });
