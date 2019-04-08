@@ -1,6 +1,9 @@
 const en = {
   notifications: {
     panel: {
+      action: {
+        readAll: "Mark all as read",
+      },
       empty: "There is not notifications yet",
       title: "Notifications",
     },

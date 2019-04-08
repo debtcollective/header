@@ -17,6 +17,33 @@ const getNotifications = async (
   }
 };
 
+const markAsRead = async (notificationId: number) => {
+  const data = { id: notificationId };
+
+  try {
+    const response = await DiscourseService.put("notifications/mark-read", {
+      body: JSON.stringify(data),
+    });
+
+    return response;
+  } catch (e) {
+    return null;
+  }
+};
+
+const markAllAsRead = async () => {
+  try {
+    // When no param is passed to the endpoint it will mark all as read https://bit.ly/2UFzPTC
+    const response = await DiscourseService.put("notifications/mark-read");
+
+    return response;
+  } catch (e) {
+    return null;
+  }
+};
+
 export default {
   getNotifications,
+  markAllAsRead,
+  markAsRead,
 };

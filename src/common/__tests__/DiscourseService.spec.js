@@ -123,6 +123,42 @@ Array [
 
     xit("allows to send POST request to a given path", () => {});
 
-    xit("allows to send PUT request to a given path", () => {});
+    it("allows to send PUT request to a given path", async () => {
+      window.fetch = jest
+        .fn()
+        .mockReturnValueOnce({
+          json: () => Promise.resolve({ csrf: "token-fake-fixed-value" }),
+          ok: true,
+        })
+        .mockReturnValueOnce(
+          Promise.resolve({ json: () => "foo putted", ok: true })
+        );
+
+      const response = await DiscourseService.put("foo.json");
+
+      expect(response).toEqual("foo putted");
+      expect(window.fetch).toHaveBeenCalledTimes(2);
+      expect(window.fetch.mock.calls[0]).toMatchInlineSnapshot(`
+Array [
+  "http://localhost:3000/session/csrf.json",
+  Object {
+    "credentials": "include",
+  },
+]
+`);
+      expect(window.fetch.mock.calls[1]).toMatchInlineSnapshot(`
+Array [
+  "http://localhost:3000/foo.json",
+  Object {
+    "credentials": "include",
+    "headers": Object {
+      "Accept": "application/json",
+      "X-CSRF-Token": "token-fake-fixed-value",
+    },
+    "method": "put",
+  },
+]
+`);
+    });
   });
 });

@@ -9,7 +9,12 @@ import React, { useState } from "react";
 
 const DROPDOWN_NAME = "@@profile/alerts/dropdown";
 
-export const AlertsDropdown = ({ alerts }: { alerts: Array<Alert> }) => {
+type Props = {
+  alerts: Array<Alert>,
+  service: NotificationReactiveService,
+};
+
+export const AlertsDropdown = ({ alerts, service }: Props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClose = () => setAnchorEl(null);
   const toggle = e => (anchorEl ? handleClose() : setAnchorEl(e.currentTarget));
@@ -49,6 +54,7 @@ export const AlertsDropdown = ({ alerts }: { alerts: Array<Alert> }) => {
               style={arrowProps.style}
             />
             <NotificationsPanel
+              service={service}
               notifications={alerts}
               handleClose={handleClose}
             />

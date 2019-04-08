@@ -50,4 +50,20 @@ export const notifications = [
     slug: "hello-im-jane-doe",
     topic_id: 26,
   },
+  {
+    created_at: "2019-04-04T06:10:46.459Z",
+    data: {
+      badge_id: 5,
+      badge_name: "Welcome",
+      badge_slug: "welcome",
+      badge_title: false,
+    },
+    id: 33,
+    notification_type: 12,
+    post_number: null,
+    read: false,
+    slug: null,
+    topic_id: null,
+    username: "alexis",
+  },
 ];

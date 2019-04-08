@@ -5,10 +5,15 @@ import moment from "moment";
 import { notifications } from "../../__fixtures__/notifications";
 import { NotificationsPanel } from "../NotificationsPanel";
 import React from "react";
-import { cleanup, render } from "react-testing-library";
+import { cleanup, fireEvent, render } from "react-testing-library";
 
 const baseProps = {
   handleClose: jest.fn(),
+  service: {
+    getNotifications: jest.fn(),
+    markAllAsRead: jest.fn(),
+    markAsRead: jest.fn(),
+  },
 };
 
 describe("<NotificationsPanel />", () => {
@@ -34,5 +39,27 @@ describe("<NotificationsPanel />", () => {
 
     expect(getAllByLabelText(/notification/i)).toHaveLength(length);
     expect(getByText(notifications[0].data.topic_title)).toBeTruthy();
+  });
+
+  it("renders an action to mark notifications as read", () => {
+    const { getByLabelText } = render(
+      <NotificationsPanel {...baseProps} notifications={notifications} />
+    );
+
+    expect(getByLabelText("mark-all-read")).toBeTruthy();
+  });
+
+  describe("on click mark all as read", () => {
+    it("calls service method", () => {
+      const { getByLabelText } = render(
+        <NotificationsPanel {...baseProps} notifications={notifications} />
+      );
+
+      const action = getByLabelText("mark-all-read");
+      fireEvent.click(action);
+
+      expect(baseProps.service.markAllAsRead).toHaveBeenCalledTimes(1);
+      expect(baseProps.service.markAllAsRead).toHaveBeenCalledWith();
+    });
   });
 });

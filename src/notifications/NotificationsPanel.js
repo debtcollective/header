@@ -4,15 +4,28 @@ import moment from "moment";
 import { NotificationsPanelComponents as NPC } from "./styled";
 import React from "react";
 import { translate } from "../locales";
-import { ClickAwayListener, Typography } from "@material-ui/core";
-import { getNotificationIcon, getNotificationLink } from "./helpers";
+import { Button, ClickAwayListener, Typography } from "@material-ui/core";
+import {
+  getNotificationIcon,
+  getNotificationLink,
+  getNotificationPresentationalData,
+} from "./helpers";
 
 type Props = {
   handleClose: Function,
+  service: NotificationReactiveService,
   notifications: Array<Notification>,
 };
 
-export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
+export const NotificationsPanel = ({
+  handleClose,
+  service,
+  notifications,
+}: Props) => {
+  const handleMarkAllRead = () => {
+    service.markAllAsRead();
+  };
+
   return (
     <ClickAwayListener onClickAway={handleClose}>
       <NPC.Container>
@@ -20,24 +33,37 @@ export const NotificationsPanel = ({ handleClose, notifications }: Props) => {
           <Typography variant="caption">
             {translate("notifications.panel.title")}
           </Typography>
+          <div className="npc-actions">
+            <Button
+              color="primary"
+              aria-label="mark-all-read"
+              onClick={handleMarkAllRead}
+            >
+              {translate("notifications.panel.action.readAll")}
+            </Button>
+          </div>
         </NPC.Header>
         <NPC.Body>
-          {notifications.map(n => (
-            <NPC.Item
-              target="_blank"
-              href={getNotificationLink(n)}
-              key={n.created_at}
-              onClick={handleClose}
-            >
-              {getNotificationIcon(n.notification_type)}
-              <div aria-label="NotificationItem">
-                <Typography variant="body2">{n.data.topic_title}</Typography>
-                <Typography variant="caption">
-                  {moment(n.created_at).fromNow()}
-                </Typography>
-              </div>
-            </NPC.Item>
-          ))}
+          {notifications.map(n => {
+            const { title, date } = getNotificationPresentationalData(n);
+
+            return (
+              <NPC.Item
+                target="_blank"
+                href={getNotificationLink(n)}
+                key={n.created_at}
+                onClick={handleClose}
+              >
+                {getNotificationIcon(n.notification_type)}
+                <div aria-label="NotificationItem">
+                  <Typography variant="body2">{title}</Typography>
+                  <Typography variant="caption">
+                    {moment(date).fromNow()}
+                  </Typography>
+                </div>
+              </NPC.Item>
+            );
+          })}
           {notifications.length === 0 && (
             <NPC.Item>
               {getNotificationIcon("announcement")}

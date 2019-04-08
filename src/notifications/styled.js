@@ -43,8 +43,14 @@ const NotificationsPanelHeader = styled.div`
   background: ${grey[100]}
   border-bottom: 1px solid ${grey[400]};
   display: flex;
+  justify-content: space-between;
   height: 2.125rem;
   padding: 0 0.625rem;
+
+  button {
+    font-size: 0.75rem;
+    text-transform: none;
+  }
 `;
 
 const NotificationsPanelItem = styled.a`

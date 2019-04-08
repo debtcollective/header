@@ -15,7 +15,10 @@ import {
 } from "react-testing-library";
 
 describe("<DebtcollectiveHeader />", () => {
-  afterEach(cleanup);
+  afterEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+  });
 
   const links = [
     { href: "/admin/disputes", text: "Admin" },
@@ -115,6 +118,30 @@ describe("<DebtcollectiveHeader />", () => {
 
         // fixture has a message on index zero
         expect(InboxDropdownItem).toBeTruthy();
+      });
+
+      describe("when user click mark all as read", () => {
+        it("calls notifications service to mark as read and get new notifications", async () => {
+          const { getByAltText, getByLabelText } = render(
+            <DebtcollectiveHeader links={links} />
+          );
+          const spyOnMarkAllAsRead = jest.spyOn(
+            NotificationService,
+            "markAllAsRead"
+          );
+          const spyOnGetNotifications = jest.spyOn(
+            NotificationService,
+            "getNotifications"
+          );
+
+          await waitForElement(() => getByAltText(userData.username));
+
+          fireEvent.click(getByLabelText("AlertsToggler"));
+          fireEvent.click(getByLabelText("mark-all-read"));
+
+          expect(spyOnMarkAllAsRead).toHaveBeenCalledTimes(1);
+          expect(spyOnGetNotifications).toHaveBeenCalledTimes(1);
+        });
       });
     });
   });

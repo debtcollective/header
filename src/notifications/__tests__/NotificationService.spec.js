@@ -1,4 +1,7 @@
+// @flow
+
 import DiscourseService from "../../common/DiscourseService";
+import faker from "faker";
 import { notifications } from "../../__fixtures__/notifications";
 import NotificationService from "../NotificationService";
 
@@ -31,6 +34,34 @@ describe("NotificationService", () => {
         expect(result).toEqual([]);
         done();
       });
+    });
+  });
+
+  describe("markAsRead", () => {
+    it("sends a request to the mark given notification id as read", () => {
+      const notifificationId = faker.random.number();
+      DiscourseService.put = jest.fn().mockResolvedValueOnce(null);
+
+      NotificationService.markAsRead(notifificationId);
+
+      expect(DiscourseService.put).toHaveBeenCalledTimes(1);
+      expect(DiscourseService.put).toHaveBeenCalledWith(
+        "notifications/mark-read",
+        { body: JSON.stringify({ id: notifificationId }) }
+      );
+    });
+  });
+
+  describe("markAllAsRead", () => {
+    it("sends a request to the mark notifications as read", () => {
+      DiscourseService.put = jest.fn().mockResolvedValueOnce(null);
+
+      NotificationService.markAllAsRead();
+
+      expect(DiscourseService.put).toHaveBeenCalledTimes(1);
+      expect(DiscourseService.put).toHaveBeenCalledWith(
+        "notifications/mark-read"
+      );
     });
   });
 });
