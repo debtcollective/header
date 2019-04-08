@@ -54,7 +54,7 @@
     "lint-staged": "8.1.5",
     "prettier": "1.16.4",
     "pretty-quick": "1.10.0",
-    "react-testing-library": "6.0.4",
+    "react-testing-library": "6.1.2",
     "semantic-release": "15.13.3",
     "user-event": "1.4.6"
   },
