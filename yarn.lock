@@ -5579,6 +5579,16 @@ dom-testing-library@3.19.0, dom-testing-library@^3.19.0:
     pretty-format "^24.5.0"
     wait-for-expect "^1.1.0"
 
+dom-testing-library@3.19.1:
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.19.1.tgz#ccde9044cacd6d95e5e5629b9cdd2f4de3ea5e1d"
+  integrity sha512-cv5k+OiDhmdjHimDcal5Yz6yHv6nXwhzW3wyXrFeIGk7jSdqqFxqzhjriPvYMrV8XNNZHUDwp0dTu6SeCtO/4w==
+  dependencies:
+    "@babel/runtime" "^7.3.4"
+    "@sheerun/mutationobserver-shim" "^0.3.2"
+    pretty-format "^24.5.0"
+    wait-for-expect "^1.1.0"
+
 dom-walk@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
