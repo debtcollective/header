@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "docz": "1.0.3",
-    "docz-theme-default": "0.13.7",
+    "docz-theme-default": "1.0.3",
     "dom-testing-library": "3.19.1",
     "eslint-plugin-flowtype": "3.6.1",
     "eslint-plugin-react": "7.12.4",
