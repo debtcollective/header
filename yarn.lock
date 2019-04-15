@@ -4931,6 +4931,16 @@ dom-testing-library@3.19.0, dom-testing-library@^3.19.0:
     pretty-format "^24.5.0"
     wait-for-expect "^1.1.0"
 
+dom-testing-library@3.19.1:
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.19.1.tgz#ccde9044cacd6d95e5e5629b9cdd2f4de3ea5e1d"
+  integrity sha512-cv5k+OiDhmdjHimDcal5Yz6yHv6nXwhzW3wyXrFeIGk7jSdqqFxqzhjriPvYMrV8XNNZHUDwp0dTu6SeCtO/4w==
+  dependencies:
+    "@babel/runtime" "^7.3.4"
+    "@sheerun/mutationobserver-shim" "^0.3.2"
+    pretty-format "^24.5.0"
+    wait-for-expect "^1.1.0"
+
 dom-walk@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
@@ -14725,12 +14735,12 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-user-event@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/user-event/-/user-event-1.4.7.tgz#2ef3ddfe08237c09a8260ee5379bdf22316d280f"
-  integrity sha512-gdMurHZlf5qcQcdBQYCHkh1TDe1Q7qqddmMuzqSZiWH3P+C99CPuNqh7KIbEGied1OD0mD3D5RP5cEF+KF4yTA==
+user-event@1.4.8:
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/user-event/-/user-event-1.4.8.tgz#896896ee428ec1fdcbf7c5b8a1e1410a0969f023"
+  integrity sha512-4IdTq4ss263Mp29CxFS/qACwU/VuHeHZkJ0afdbeV97NBvBTxsITV2fn2ZXEGtaHI8tiav3g1GrUUEABRMHOcA==
   dependencies:
-    dom-testing-library "3.19.0"
+    dom-testing-library "3.19.1"
 
 util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"
