@@ -2,11 +2,17 @@
 [![codecov](https://codecov.io/gh/debtcollective/header/branch/master/graph/badge.svg)](https://codecov.io/gh/debtcollective/header)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
 
-In the project directory, the principal commands you may want to know are:
+`yarn install @debtcollective/header`
 
-## Getting Started
+## Usage
+
+```js
+import Header from @debtcollective/header
+```
+
+## Development
 
 Make sure to have the environment variables in order the project to work (even locally)
 
@@ -14,7 +20,7 @@ Make sure to have the environment variables in order the project to work (even l
 $ cp env.sample .env
 ```
 
-## Main Scripts
+In the project directory, the principal commands you may want to know are:
 
 ### `yarn start`
 
