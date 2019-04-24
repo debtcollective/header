@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - lts/*
 cache: yarn
-
 after_success: npx codecov
 
 jobs:
@@ -18,3 +17,9 @@ jobs:
         skip_cleanup: true
         script:
           - npx semantic-release
+
+notifications:
+  email: false
+  slack:
+    rooms:
+      - secure: nN/oayPUWUjQMppYfizY/YZm8CnsoQbpy2WjBrj1zeAJaf+bfTK1xxFxeiNDbL8/7i55N5f0M6RB3aM9jn6uCx2XIw8T1I7tGf6YcY7y0QmjHPlSNVESgmYblKDDwgUWEfF0VeGVFAw+OY1uqB938KU2k+JvCAvOHioBSVR8AzfntXw6ClJ90d5IMWjNMOgLDlOmCKc/jIhJqDWiLZXZ6VKyH31G/cjzuHDZhB/PDDzXAB7/kwU5vkhuMqhlaCo+UWmAPx+qZEn1WaSlV57mr/Ij2zXTbRooQsPgf7VrGu1XVrB92hUz8HUlWsYJEdA5TVYmJytrePnke7YHYiBywlBNtgpBJSGiUhOMfI9+Sym22tCq/6CLkISYTActtHeDF2KVOgVIDxFKiYARwBAtBWaI5qupKDnUypXBQRSWXW65/fQTJ1bMibMxMGfTJR6ABUFfudvLiheyigRcLL/5lftiCEzhRFmCTftzZD/6TwWn8Mmfd10foBiFzmu8SvzX7c2CNkGJhqHU9BlDNjEw+qatmDZZISspEd/UV/Wy/mlzVLe5Prj4FFj0eCOUc8RFJ4HRWlfsMYVeEHct9YLG5u6xIW07A+2GnKMLLHbMHRmVBvei1Veq3//qNrz4UTkg0OKcU9J5FafG9oldtYAAXGz0j2zqLKYiGpT91XTN1IU=

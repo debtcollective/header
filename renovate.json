@@ -1,5 +1,13 @@
 {
-  "extends": [
-    "config:base"
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "packageNames": ["docz", "docz-theme-default"],
+      "allowedVersions": "0.13.7"
+    },
+    {
+      "packageNames": ["@emotion/core", "emotion-theming"],
+      "allowedVersions": "10.0.6"
+    }
   ]
 }
