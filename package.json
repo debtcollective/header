@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/cli": "~7.4.3",
+    "@babel/core": "~7.4.3",
     "@emotion/core": "10.0.6",
     "docz": "0.13.7",
     "docz-theme-default": "0.13.7",
