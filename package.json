@@ -68,7 +68,7 @@
     "lint-staged": "8.1.5",
     "prettier": "1.17.0",
     "pretty-quick": "1.10.0",
-    "react-scripts": "2.1.8",
+    "react-scripts": "3.0.0",
     "react-testing-library": "6.1.2",
     "semantic-release": "15.13.3",
     "user-event": "2.0.1"
