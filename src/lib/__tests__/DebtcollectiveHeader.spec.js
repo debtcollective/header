@@ -2,7 +2,7 @@
 
 jest.mock("../session/SessionService");
 
-import DebtcollectiveHeader from "../DebtcollectiveHeader";
+import DebtcollectiveHeader from "../";
 import { notifications } from "../__fixtures__/notifications";
 import NotificationService from "../notifications/NotificationService";
 import React from "react";

@@ -1,9 +1,8 @@
 // @flow
 
 import "./index.css";
-import * as React from "react";
-import * as serviceWorker from "./serviceWorker";
-import DebtcollectiveHeader from "./DebtcollectiveHeader";
+import Header from "./lib";
+import React from "react";
 import ReactDOM from "react-dom";
 
 const root = document.getElementById("root");
@@ -16,10 +15,5 @@ const links = [
 ];
 
 if (root !== null) {
-  ReactDOM.render(<DebtcollectiveHeader links={links} />, root);
+  ReactDOM.render(<Header links={links} />, root);
 }
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
