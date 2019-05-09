@@ -35,6 +35,10 @@ In the project directory, the principal commands you may want to know are:
 
 Runs Rollup in watch mode
 
+### `yarn build`
+
+Builds the package using Rollup
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
