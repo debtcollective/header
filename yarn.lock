@@ -5003,16 +5003,6 @@ dom-serializer@0:
     domelementtype "^1.3.0"
     entities "^1.1.1"
 
-dom-testing-library@3.19.3:
-  version "3.19.3"
-  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.19.3.tgz#fba399987be1bdd57b07c4bc3ef46c3c084b26d9"
-  integrity sha512-oiI+oq91iO/Vpp+pt8PqfqLfBK074FH0eprhoFNvBCvJOk7vL4ozbe/yj/kEEGR6kiT4F3MAam19AX1fdGFjrA==
-  dependencies:
-    "@babel/runtime" "^7.3.4"
-    "@sheerun/mutationobserver-shim" "^0.3.2"
-    pretty-format "^24.5.0"
-    wait-for-expect "^1.1.0"
-
 dom-testing-library@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-4.0.1.tgz#f21ef42aea0bd635969b4227a487e4704dbea735"
@@ -5697,7 +5687,7 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-expect@^24.8.0:
+expect@^24.7.1, expect@^24.8.0:
   version "24.8.0"
   resolved "https://registry.yarnpkg.com/expect/-/expect-24.8.0.tgz#471f8ec256b7b6129ca2524b2a62f030df38718d"
   integrity sha512-/zYvP8iMDrzaaxHVa724eJBCKqSHmO0FA7EDkBiRHxg6OipmMn1fN+C8T9L9K8yr7UONkOifu6+LLH+z76CnaA==
@@ -11462,7 +11452,7 @@ pretty-error@^2.1.1:
     renderkid "^2.0.1"
     utila "~0.4"
 
-pretty-format@^24.0.0, pretty-format@^24.5.0, pretty-format@^24.7.0, pretty-format@^24.8.0:
+pretty-format@^24.0.0, pretty-format@^24.7.0, pretty-format@^24.8.0:
   version "24.8.0"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-24.8.0.tgz#8dae7044f58db7cb8be245383b565a963e3c27f2"
   integrity sha512-P952T7dkrDEplsR+TuY7q3VXDae5Sr7zmQb12JU/NDQa/3CH7/QW0yvqLcGN6jL+zQFKaoJcPc+yJxMTGmosqw==
@@ -14646,12 +14636,12 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-user-event@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/user-event/-/user-event-2.0.1.tgz#cb70e358de6ce435baa306a5d7caf41f9ca9afe1"
-  integrity sha512-L/GnWRAVxikEaOrlkPh3ajmz03kqO0EchxLqr1+d3LMh9+bT6DMd/384qctHe8EOnGAPYNiG50/mQP5KGtJSpQ==
+user-event@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/user-event/-/user-event-3.0.1.tgz#f40e835ea71625a5c8dd09983c65f0f34701a12f"
+  integrity sha512-UUNDTFg0rZz9YbOnjHYvIr/sGJpmYnI4QAbdqzojHfr9W1W3d+dM7vFIJKL5VeR2vfY7CZTvSK7sqq093GlMSw==
   dependencies:
-    dom-testing-library "3.19.3"
+    dom-testing-library "4.0.1"
 
 util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"
@@ -14808,7 +14798,7 @@ w3c-xmlserializer@^1.1.2:
     webidl-conversions "^4.0.2"
     xml-name-validator "^3.0.0"
 
-wait-for-expect@^1.1.0, wait-for-expect@^1.1.1:
+wait-for-expect@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/wait-for-expect/-/wait-for-expect-1.1.1.tgz#9cd10e07d52810af9e0aaf509872e38f3c3d81ae"
   integrity sha512-vd9JOqqEcBbCDhARWhW85ecjaEcfBLuXgVBqatfS3iw6oU4kzAcs+sCNjF+TC9YHPImCW7ypsuQc+htscIAQCw==

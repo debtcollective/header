@@ -75,7 +75,7 @@
     "react-testing-library": "6.1.2",
     "semantic-release": "15.13.3",
     "styled-components": "^4.2.0",
-    "user-event": "2.0.1"
+    "user-event": "3.0.1"
   },
   "husky": {
     "hooks": {
