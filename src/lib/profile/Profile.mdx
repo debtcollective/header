@@ -42,7 +42,7 @@ Serves as a wrapper to render "Profile items" section as a unit with inteded com
   <ProfileItems>
     <AlertsDropdown alerts={[notifications[1]]} />
     <InboxDropdown messages={[notifications[0], notifications[2]]} />
-    <UserAvatarDropdown />
+    <UserAvatarDropdown user={{ username: "John Doe" }} />
   </ProfileItems>
 </Playground>
 
