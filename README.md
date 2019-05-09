@@ -4,31 +4,36 @@
 
 ## Installation
 
-`yarn install @debtcollective/header`
+```bash
+yarn add @debtcollective/header
+```
 
 ## Usage
 
 ```js
+import React, { Component } from 'react'
 import Header from @debtcollective/header
+
+class Example extends Component {
+  render () {
+    return (
+      <Header />
+    )
+  }
+}
 ```
+
+## Dependencies
+
+Check **package.json** `peerDependencies`.
 
 ## Development
-
-Make sure to have the environment variables in order the project to work (even locally)
-
-```
-$ cp env.sample .env
-```
 
 In the project directory, the principal commands you may want to know are:
 
 ### `yarn start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Runs Rollup in watch mode
 
 ### `yarn test`
 
@@ -37,19 +42,29 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `yarn docz dev`
 
-Launches a server with components documentation sorted by scopes.
+Launches a server with components documentation.
 
-## Contributing
+## Example app
 
-- We enforce the usage of semantic commits throught https://commitizen.github.io/cz-cli/
-- The scope for semantic commits belongs to first level folder from `src/` unless changes are outside of `src` folder
+To run the example run:
+
+```bash
+cd example
+yarn install
+yarn start
+```
+
+This app is based on [create-react-app](https://github.com/facebookincubator/create-react-app), serving 2 purposes
+
+- Local, hot-reload server for developing your module
+- Easily publishable to github pages
+
+## Coding guideline
+
+- We use semantic commits throught https://commitizen.github.io/cz-cli/
 - While Material UI support `withStyles` we prefer the usage of https://www.styled-components.com to do so, often needing to apply extra specificity to allow styles to being applied
 - Some UI pieces from Material UI needs unique identifiers, so we use constants in the same file but with a format to avoid conflicts like so: `const <ELEMENT_TYPE>_NAME = "@@<scope>/<component>/<element_type>";`
 
-## Learn More
+## License
 
-Some information missing? Make sure to check out [Create React App local document](./CRA.md)
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+BSD-3-Clause © [@debtcollective](https://github.com/debtcollective)
