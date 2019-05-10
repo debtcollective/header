@@ -1,4 +1,7 @@
 [ignore]
+.*/__tests__/.*
+.*/__fixtures__/.*
+.*/__mocks__/.*
 
 [include]
 

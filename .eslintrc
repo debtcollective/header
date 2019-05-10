@@ -5,10 +5,14 @@
     "jest": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:flowtype/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
+  ],
   "plugins": ["flowtype", "react"],
   "rules": {
-    "comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": [2, "always-multiline"],
     "jsx-quotes": ["error", "prefer-double"],
     "keyword-spacing": ["error"],
     "linebreak-style": ["error", "unix"],
@@ -24,13 +28,19 @@
     "quotes": ["error", "double"],
     "react/prop-types": 0,
     "semi": ["error", "always"],
-    "sort-imports": ["error", {
-      "ignoreCase": true,
-      "memberSyntaxSortOrder": ["none", "all", "single", "multiple"]
-    }],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "memberSyntaxSortOrder": ["none", "all", "single", "multiple"]
+      }
+    ],
     "sort-keys": ["warn", "asc", { "natural": true }],
     "space-before-blocks": ["error", "always"],
-    "space-before-function-paren": ["error", { "anonymous": "never", "named": "never", "asyncArrow": "always" }],
+    "space-before-function-paren": [
+      "error",
+      { "anonymous": "never", "named": "never", "asyncArrow": "always" }
+    ],
     "space-in-parens": ["error", "never"],
     "wrap-iife": ["error", "inside"]
   },
@@ -42,7 +52,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "flowVersion": "0.93"
+    "flowVersion": "0.98.1"
   },
   "settings": {
     "react": {

@@ -2,8 +2,12 @@
   "presets": [
     [
       "@babel/preset-env",
-      { "useBuiltIns": "entry", "corejs": "3", "debug": true }
+      {
+        "modules": false
+      }
     ],
-    ["react-app", { "absoluteRuntime": false }]
-  ]
+    "@babel/preset-react",
+    "@babel/preset-flow"
+  ],
+  "plugins": ["@babel/plugin-proposal-class-properties"]
 }

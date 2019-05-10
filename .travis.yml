@@ -17,6 +17,14 @@ jobs:
         skip_cleanup: true
         script: "yarn build && npx semantic-release"
 
+    - stage: deploy
+      if: branch = master
+      node_js: lts/*
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: "yarn predeploy && gh-pages --repo https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git -d example/build"
 notifications:
   email: false
   slack:

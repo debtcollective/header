@@ -1,13 +1,8 @@
 // @flow
 
+// TODO: We should find a better way to do this, ex: passing this value as a prop.
 const setDiscourseEndpoint = () => {
-  const discourseEndpoint = process.env.REACT_APP_DISCOURSE_ENDPOINT;
-
-  if (!discourseEndpoint) {
-    throw new Error("You must provide a valid Discourse enpoint");
-  }
-
-  return discourseEndpoint;
+  return process.env.DISCOURSE_ENDPOINT || "http://localhost:3000";
 };
 
 const parseResponseToJSON = (response: Response): Promise<Object> => {

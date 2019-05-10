@@ -4,7 +4,7 @@ import DiscourseService from "../DiscourseService";
 import faker from "faker";
 
 describe("DiscourseService", () => {
-  const baseUrl = process.env.REACT_APP_DISCOURSE_ENDPOINT || "";
+  const baseUrl = process.env.DISCOURSE_ENDPOINT || "http://localhost:3000";
 
   it("allows to navigate to a Discourse page", () => {
     window.open = jest.fn();
