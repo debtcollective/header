@@ -67,7 +67,7 @@
     "cross-env": "^5.1.4",
     "docz": "0.13.7",
     "docz-theme-default": "0.13.7",
-    "dom-testing-library": "4.0.1",
+    "dom-testing-library": "4.1.0",
     "eslint": "^5.0.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
