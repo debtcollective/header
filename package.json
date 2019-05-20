@@ -82,7 +82,7 @@
     "gh-pages": "1.2.0",
     "husky": "2.3.0",
     "jest-dom": "3.2.2",
-    "lint-staged": "8.1.6",
+    "lint-staged": "8.1.7",
     "lodash": "4.17.11",
     "moment": "2.24.0",
     "prettier-eslint-cli": "4.7.1",
