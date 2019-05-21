@@ -23,7 +23,6 @@
     "flow": "flow focus-check"
   },
   "resolutions": {
-    "babel-jest": "24.7.1",
     "ansi-styles": "^3.2.0"
   },
   "peerDependencies": {
