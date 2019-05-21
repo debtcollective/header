@@ -42,6 +42,7 @@ export const AlertsDropdown = ({ alerts, service }: Props) => {
         {({ ref, style, placement, arrowProps }) => (
           <div
             ref={ref}
+            data-testid="alerts-dropdown"
             style={{
               ...style,
               margin: 2,

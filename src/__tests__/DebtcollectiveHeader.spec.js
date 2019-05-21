@@ -122,7 +122,7 @@ describe("<DebtcollectiveHeader />", () => {
 
       describe("when user click mark all as read", () => {
         it("calls notifications service to mark as read and get new notifications", async () => {
-          const { getByAltText, getByLabelText } = render(
+          const { getByAltText, getByLabelText, container } = render(
             <DebtcollectiveHeader links={links} />
           );
           const spyOnMarkAllAsRead = jest.spyOn(
@@ -137,7 +137,11 @@ describe("<DebtcollectiveHeader />", () => {
           await waitForElement(() => getByAltText(userData.username));
 
           fireEvent.click(getByLabelText("AlertsToggler"));
-          fireEvent.click(getByLabelText("mark-all-read"));
+          fireEvent.click(
+            container.querySelector(
+              "[data-testid=\"alerts-dropdown\"] button[aria-label=\"mark-all-read\"]"
+            )
+          );
 
           expect(spyOnMarkAllAsRead).toHaveBeenCalledTimes(1);
           expect(spyOnGetNotifications).toHaveBeenCalledTimes(1);
