@@ -80,7 +80,7 @@
     "flow-bin": "0.98.1",
     "gh-pages": "2.0.1",
     "husky": "2.3.0",
-    "jest-dom": "3.3.0",
+    "jest-dom": "3.4.0",
     "lint-staged": "8.1.7",
     "lodash": "4.17.11",
     "moment": "2.24.0",
