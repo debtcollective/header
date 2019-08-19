@@ -6,21 +6,30 @@
   "license": "BSD-3-Clause",
   "repository": "debtcollective/header",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "module": "es/index.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
   },
+  "files": [
+    "README.md",
+    "dist",
+    "es"
+  ],
   "scripts": {
+    "build": "yarn build:rollup && yarn build:esm",
+    "build:esm": "rm -rf es && babel src --out-dir es --copy-files",
+    "build:rollup": "rollup -c",
+    "deploy:ci": "gh-pages -m 'chore: deploy gh-pages [ci skip]' -d example/build -r https://$GH_TOKEN@github.com/debtcollective/header.git",
+    "flow": "flow focus-check",
+    "predeploy": "cd example && yarn install && yarn run build",
+    "prepare": "yarn run build",
+    "start": "yarn watch",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "cross-env CI=1 react-scripts test --env=jsdom --coverage --color",
-    "build": "rollup -c",
-    "start": "rollup -c -w",
-    "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build",
-    "flow": "flow focus-check"
+    "watch": "concurrently \"yarn watch:rollup\" \"yarn watch:babel\"",
+    "watch:babel": "babel src --out-dir es --copy-files --watch --verbose",
+    "watch:rollup": "rollup -c -w"
   },
   "resolutions": {
     "ansi-styles": "^3.2.0"
@@ -37,6 +46,7 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "7.5.5",
     "@babel/core": "7.5.4",
     "@babel/plugin-external-helpers": "7.2.0",
     "@babel/plugin-proposal-class-properties": "7.5.0",
@@ -63,6 +73,7 @@
     "@material-ui/icons": "3.0.2",
     "@svgr/rollup": "4.3.2",
     "babel-eslint": "10.0.1",
+    "concurrently": "4.1.2",
     "cross-env": "5.2.0",
     "docz": "0.13.7",
     "docz-theme-default": "0.13.7",
@@ -99,10 +110,6 @@
     "rollup-plugin-url": "2.2.2",
     "styled-components": "4.2.0"
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

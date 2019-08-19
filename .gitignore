@@ -9,6 +9,7 @@ npm
 # builds
 build
 dist
+es
 .rpt2_cache
 
 # misc
