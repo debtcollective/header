@@ -80,7 +80,7 @@
     "dom-testing-library": "5.0.0",
     "eslint": "5.16.0",
     "eslint-config-standard": "14.0.0",
-    "eslint-config-standard-react": "8.0.0",
+    "eslint-config-standard-react": "9.0.0",
     "eslint-plugin-flowtype": "4.2.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-node": "9.1.0",
