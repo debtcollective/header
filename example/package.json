@@ -21,7 +21,7 @@
     "styled-components": "4.2.0"
   },
   "devDependencies": {
-    "cross-env": "5.2.1"
+    "cross-env": "6.0.0"
   },
   "scripts": {
     "start": "cross-env PORT=8080 react-scripts start",
