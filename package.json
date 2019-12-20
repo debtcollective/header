@@ -78,7 +78,7 @@
     "docz": "0.13.7",
     "docz-theme-default": "0.13.7",
     "dom-testing-library": "5.0.0",
-    "eslint": "5.16.0",
+    "eslint": "6.8.0",
     "eslint-config-standard": "14.1.0",
     "eslint-config-standard-react": "9.2.0",
     "eslint-plugin-flowtype": "4.3.0",
