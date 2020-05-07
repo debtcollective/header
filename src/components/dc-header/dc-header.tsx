@@ -1,32 +1,43 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import { Component, Prop, h, Watch } from "@stencil/core";
 
 @Component({
-  tag: 'dc-header',
-  styleUrl: 'dc-header.css',
-  shadow: true
+  tag: "dc-header",
+  styleUrl: "dc-header.css",
+  shadow: true,
 })
-export class MyComponent {
+export class Header {
   /**
-   * The first name
+   * The links you need to display within the header
    */
-  @Prop() first: string;
+  @Prop() links: string;
 
   /**
-   * The middle name
+   * Hos the value of "links" parsed to an actual Array
    */
-  @Prop() middle: string;
+  private _links: Array<{ text: string; href: string }>;
 
-  /**
-   * The last name
-   */
-  @Prop() last: string;
+  @Watch('links')
+  linksDidChangeHandler(newValue) {
+    this._links = JSON.parse(newValue)
+  }
 
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
+  componentWillLoad() {
+    this.linksDidChangeHandler(this.links);
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return (
+      <header>
+        <nav>
+          <ul>
+            {this._links.map(({ text, href }) => (
+              <li>
+                <a href={href}>{text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
+    );
   }
 }

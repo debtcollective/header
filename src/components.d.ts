@@ -8,17 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface DcHeader {
         /**
-          * The first name
+          * The links you need to display within the header
          */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "links": string;
     }
 }
 declare global {
@@ -35,17 +27,9 @@ declare global {
 declare namespace LocalJSX {
     interface DcHeader {
         /**
-          * The first name
+          * The links you need to display within the header
          */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "links"?: string;
     }
     interface IntrinsicElements {
         "dc-header": DcHeader;
