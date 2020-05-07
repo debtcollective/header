@@ -11,6 +11,10 @@ export namespace Components {
           * The links you need to display within the header
          */
         "links": string;
+        /**
+          * Logo image
+         */
+        "logo": string;
     }
 }
 declare global {
@@ -30,6 +34,10 @@ declare namespace LocalJSX {
           * The links you need to display within the header
          */
         "links"?: string;
+        /**
+          * Logo image
+         */
+        "logo"?: string;
     }
     interface IntrinsicElements {
         "dc-header": DcHeader;

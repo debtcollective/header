@@ -1,11 +1,17 @@
-import { Component, Prop, h, Watch } from "@stencil/core";
+import { Component, Prop, h, Watch, getAssetPath } from "@stencil/core";
 
 @Component({
+  assetsDirs: ['assets'],
   tag: "dc-header",
   styleUrl: "dc-header.css",
   shadow: true,
 })
 export class Header {
+  /**
+   * Logo image
+   */
+  @Prop() logo = "logo.png";
+
   /**
    * The links you need to display within the header
    */
@@ -27,15 +33,14 @@ export class Header {
 
   render() {
     return (
-      <header>
-        <nav>
-          <ul>
-            {this._links.map(({ text, href }) => (
-              <li>
-                <a href={href}>{text}</a>
-              </li>
-            ))}
-          </ul>
+      <header class="header">
+        <img class="logo" src={getAssetPath(`./assets/${this.logo}`)} alt="The Debtcollective"/>
+        <nav class="nav">
+          {this._links.map(({ text, href }) => (
+            <div class="nav-item">
+              <a class="nav-link" href={href}>{text}</a>
+            </div>
+          ))}
         </nav>
       </header>
     );
