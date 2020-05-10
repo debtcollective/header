@@ -1,21 +1,17 @@
 import { Component, Prop, State, h, Watch, getAssetPath } from "@stencil/core";
 import { syncCurrentUser } from "../../services/session";
+import {
+  preffixCommunityURL,
+  getAvatarURL,
+  signupURL,
+  loginURL,
+} from "../../utils/community";
 
 type User = {
   id: number;
   admin: boolean;
   avatar_template: string;
   username: string;
-};
-
-const redirectParam = `return_url=${process.env.HOST_URL}`;
-const loginURL = `${process.env.COMMUNITY_URL}/session/sso_cookies?${redirectParam}`;
-const signupURL = `${process.env.COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`;
-
-const preffixCommunityURL = (str) => `${process.env.COMMUNITY_URL}/${str}`;
-
-const getAvatarURL = ({ avatar_template }) => {
-  return preffixCommunityURL(avatar_template.replace(`{size}`, 64));
 };
 
 @Component({
