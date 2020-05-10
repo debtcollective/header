@@ -1,4 +1,5 @@
-import { Component, Prop, h, Watch, getAssetPath } from "@stencil/core";
+import { Component, Prop, State, h, Watch, getAssetPath } from "@stencil/core";
+import { syncCurrentUser } from "../../services/session";
 
 @Component({
   assetsDirs: ['assets'],
@@ -18,6 +19,12 @@ export class Header {
   @Prop() links: string;
 
   /**
+   * An object with the user data when there is a 
+   * user logged in
+   */
+  @State() user: Object = {};
+
+  /**
    * Hos the value of "links" parsed to an actual Array
    */
   private _links: Array<{ text: string; href: string }>;
@@ -27,8 +34,14 @@ export class Header {
     this._links = JSON.parse(newValue)
   }
 
+  async syncCurrentUser() {
+    const user = await syncCurrentUser('http://lvh.me:3000')
+    this.user = user;
+  }
+
   componentWillLoad() {
     this.linksDidChangeHandler(this.links);
+    return this.syncCurrentUser();
   }
 
   render() {
