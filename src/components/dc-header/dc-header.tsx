@@ -71,11 +71,13 @@ export class Header {
 
     return (
       <header class="header">
-        <img
-          class="logo"
-          src={getAssetPath(`./assets/${this.logo}`)}
-          alt="The Debtcollective"
-        />
+        <a class="logo-link" href="/">
+          <img
+            class="logo"
+            src={getAssetPath(`./assets/${this.logo}`)}
+            alt="The Debtcollective"
+          />
+        </a>
         <nav class="nav">
           {this._links.map(({ text, href }) => (
             <div class="nav-item">
