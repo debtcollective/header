@@ -35,6 +35,7 @@
 
 /* Navigation */
 :host .nav {
+  align-items: center;
   display: flex;
 }
 
@@ -58,4 +59,14 @@
 
 :host .nav-link:hover {
   color: var(--brand-color);
+}
+
+/* Avatar */
+:host .header-dropdown-toggle {
+  display: flex;
+  margin-left: 1.5rem;
+}
+
+:host .avatar {
+  border-radius: 50%;
 }
