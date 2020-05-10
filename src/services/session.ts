@@ -8,6 +8,10 @@ const getCSRFToken = async (discourseEndpoint) => {
     },
   });
 
+  if (!response.ok) {
+    throw "Error trying CSRF token";
+  }
+
   const json = await response.json();
 
   return json;
@@ -23,6 +27,11 @@ const getCurrentUser = async (discourseEndpoint, { csrfToken }) => {
     },
   });
 
+  // Could be the case for no active session
+  if (!response.ok) {
+    return;
+  }
+  
   const json = await response.json();
   const { current_user: currentUser } = json;
 
@@ -30,8 +39,14 @@ const getCurrentUser = async (discourseEndpoint, { csrfToken }) => {
 };
 
 export const syncCurrentUser = async (discourseEndpoint) => {
-  const csrfToken = await getCSRFToken(discourseEndpoint);
-  const currentUser = await getCurrentUser(discourseEndpoint, { csrfToken });
+  let currentUser;
+
+  try {
+    const csrfToken = await getCSRFToken(discourseEndpoint);
+    currentUser = await getCurrentUser(discourseEndpoint, { csrfToken });
+  } catch (error) {
+    console.error(error);
+  }
 
   return currentUser;
 };

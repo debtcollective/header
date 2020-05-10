@@ -8,10 +8,19 @@ type User = {
   username: string;
 };
 
-const preffixDiscourse = (str) => `http://lvh.me:3000/${str}`;
+const vars = {
+  HOST_URL: "http://lvh.me:3333",
+  COMMUNITY_URL: "http://lvh.me:3000",
+};
+
+const redirectParam = `return_url=${vars.HOST_URL}`;
+const loginURL = `${vars.COMMUNITY_URL}/session/sso_cookies?${redirectParam}`;
+const signupURL = `${vars.COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`;
+
+const preffixCommunityURL = (str) => `${vars.COMMUNITY_URL}/${str}`;
 
 const getAvatarURL = ({ avatar_template }) => {
-  return preffixDiscourse(avatar_template.replace(`{size}`, 64));
+  return preffixCommunityURL(avatar_template.replace(`{size}`, 64));
 };
 
 @Component({
@@ -35,7 +44,7 @@ export class Header {
    * An object with the user data. Follows Discourse structure as
    * https://docs.discourse.org/#tag/Users/paths/~1users~1{username}.json/get
    */
-  @State() user: User;
+  @State() user?: User;
 
   /**
    * Hos the value of "links" parsed to an actual Array
@@ -48,7 +57,7 @@ export class Header {
   }
 
   async syncCurrentUser() {
-    const user = await syncCurrentUser("http://lvh.me:3000");
+    const user = await syncCurrentUser(vars.COMMUNITY_URL);
     this.user = user;
   }
 
@@ -59,8 +68,6 @@ export class Header {
 
   render() {
     const user = this.user;
-    const avatarURL = getAvatarURL(user);
-    const profileURL = preffixDiscourse(user.username);
 
     return (
       <header class="header">
@@ -77,17 +84,31 @@ export class Header {
               </a>
             </div>
           ))}
-
-          <a id="current-user" href={profileURL} class="header-dropdown-toggle">
-            <img
-              alt="Profile picture"
-              width="32"
-              height="32"
-              src={avatarURL}
-              title={user.username}
-              class="avatar"
-            />
-          </a>
+          {user ? (
+            <a
+              id="current-user"
+              href={preffixCommunityURL(user.username)}
+              class="header-dropdown-toggle"
+            >
+              <img
+                alt="Profile picture"
+                width="32"
+                height="32"
+                src={getAvatarURL(user)}
+                title={user.username}
+                class="avatar"
+              />
+            </a>
+          ) : (
+            <div class="session-links">
+              <a href={signupURL} class="btn-session">
+                Sign up
+              </a>
+              <a href={loginURL} class="btn-session">
+                Login
+              </a>
+            </div>
+          )}
         </nav>
       </header>
     );
