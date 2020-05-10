@@ -8,13 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface DcHeader {
         /**
-          * The links you need to display within the header
+          * The links you need to display within the header this string needs to be JSON (able to JSON.parse)
          */
         "links": string;
-        /**
-          * Logo image
-         */
-        "logo": string;
     }
 }
 declare global {
@@ -31,13 +27,9 @@ declare global {
 declare namespace LocalJSX {
     interface DcHeader {
         /**
-          * The links you need to display within the header
+          * The links you need to display within the header this string needs to be JSON (able to JSON.parse)
          */
         "links"?: string;
-        /**
-          * Logo image
-         */
-        "logo"?: string;
     }
     interface IntrinsicElements {
         "dc-header": DcHeader;

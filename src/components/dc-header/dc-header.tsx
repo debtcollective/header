@@ -22,12 +22,8 @@ type User = {
 })
 export class Header {
   /**
-   * Logo image
-   */
-  @Prop() logo = "logo.png";
-
-  /**
    * The links you need to display within the header
+   * this string needs to be JSON (able to JSON.parse)
    */
   @Prop() links: string;
 
@@ -38,7 +34,12 @@ export class Header {
   @State() user?: User;
 
   /**
-   * Hos the value of "links" parsed to an actual Array
+   * Logo image
+   */
+  private _logo = "logo.png";
+
+  /**
+   * Host the value of "links" parsed to an actual Array
    */
   private _links: Array<{ text: string; href: string }>;
 
@@ -65,7 +66,7 @@ export class Header {
         <a class="logo-link" href="/">
           <img
             class="logo"
-            src={getAssetPath(`./assets/${this.logo}`)}
+            src={getAssetPath(`./assets/${this._logo}`)}
             alt="The Debtcollective"
           />
         </a>
