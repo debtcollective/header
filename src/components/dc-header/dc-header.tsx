@@ -84,31 +84,29 @@ export class Header {
               </a>
             </div>
           ))}
-          {user ? (
-            <a
-              id="current-user"
-              href={preffixCommunityURL(user.username)}
-              class="header-dropdown-toggle"
-            >
-              <img
-                alt="Profile picture"
-                width="32"
-                height="32"
-                src={getAvatarURL(user)}
-                title={user.username}
-                class="avatar"
-              />
-            </a>
-          ) : (
-            <div class="session-links">
-              <a href={signupURL} class="btn-session">
-                Sign up
+          <div class="session-items">
+            {user ? (
+              <a id="current-user" href={preffixCommunityURL(user.username)}>
+                <img
+                  alt="Profile picture"
+                  width="32"
+                  height="32"
+                  src={getAvatarURL(user)}
+                  title={user.username}
+                  class="avatar"
+                />
               </a>
-              <a href={loginURL} class="btn-session">
-                Login
-              </a>
-            </div>
-          )}
+            ) : (
+              <div class="session-links">
+                <a href={signupURL} class="btn btn-session">
+                  Sign up
+                </a>
+                <a href={loginURL} class="btn btn-session">
+                  Login
+                </a>
+              </div>
+            )}
+          </div>
         </nav>
       </header>
     );
