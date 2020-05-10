@@ -8,16 +8,11 @@ type User = {
   username: string;
 };
 
-const vars = {
-  HOST_URL: "http://lvh.me:3333",
-  COMMUNITY_URL: "http://lvh.me:3000",
-};
+const redirectParam = `return_url=${process.env.HOST_URL}`;
+const loginURL = `${process.env.COMMUNITY_URL}/session/sso_cookies?${redirectParam}`;
+const signupURL = `${process.env.COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`;
 
-const redirectParam = `return_url=${vars.HOST_URL}`;
-const loginURL = `${vars.COMMUNITY_URL}/session/sso_cookies?${redirectParam}`;
-const signupURL = `${vars.COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`;
-
-const preffixCommunityURL = (str) => `${vars.COMMUNITY_URL}/${str}`;
+const preffixCommunityURL = (str) => `${process.env.COMMUNITY_URL}/${str}`;
 
 const getAvatarURL = ({ avatar_template }) => {
   return preffixCommunityURL(avatar_template.replace(`{size}`, 64));
@@ -57,7 +52,7 @@ export class Header {
   }
 
   async syncCurrentUser() {
-    const user = await syncCurrentUser(vars.COMMUNITY_URL);
+    const user = await syncCurrentUser(process.env.COMMUNITY_URL);
     this.user = user;
   }
 
@@ -88,7 +83,10 @@ export class Header {
           ))}
           <div class="session-items">
             {user ? (
-              <a id="current-user" href={preffixCommunityURL(user.username)}>
+              <a
+                id="current-user"
+                href={preffixCommunityURL(`u/${user.username}`)}
+              >
                 <img
                   alt="Profile picture"
                   width="32"
