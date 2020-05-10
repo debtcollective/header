@@ -82,6 +82,7 @@ export class Header {
               <a
                 id="current-user"
                 href={preffixCommunityURL(`u/${user.username}`)}
+                target="_blank"
               >
                 <img
                   alt="Profile picture"
