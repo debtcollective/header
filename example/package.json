@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "resolutions": {
-    "babel-jest": "24.7.1"
+    "babel-jest": "24.9.0"
   },
   "dependencies": {
     "@debtcollective/header": "link:..",
